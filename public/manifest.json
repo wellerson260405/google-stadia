@@ -27,7 +27,7 @@
     {
       "run_at": "document_start",
       "matches": [
-        "https://www.xbox.com/en-US/play/*",
+        "https://www.xbox.com/*/play/*",
         "https://gamepad-tester.com/"
       ],
       "js": [
