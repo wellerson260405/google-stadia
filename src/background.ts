@@ -16,7 +16,7 @@ chrome.runtime.onInstalled.addListener(({ reason }) => {
     storeActiveGamepadConfig(DEFAULT_CONFIG_NAME);
   }
   if (typeof chrome.runtime.setUninstallURL === 'function') {
-    chrome.runtime.setUninstallURL('https://3domsoogkm8.typeform.com/to/PNANDJcU');
+    chrome.runtime.setUninstallURL('https://forms.gle/nzToDcw1mmssMBLx6');
   }
 });
 
