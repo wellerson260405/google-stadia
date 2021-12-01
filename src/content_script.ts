@@ -1,4 +1,4 @@
-import { Message } from './shared/messages';
+import { injectedMsg, Message } from './shared/messages';
 import { injectCssFile, injectImagePaths, injectInitialScriptFile } from './shared/pageInjectUtils';
 
 /*
@@ -9,10 +9,13 @@ import { injectCssFile, injectImagePaths, injectInitialScriptFile } from './shar
  */
 
 injectInitialScriptFile(chrome.runtime.getURL('/js/injected.js'));
+
 document.addEventListener('DOMContentLoaded', () => {
   injectCssFile(chrome.runtime.getURL('/css/injected.css'));
   injectImagePaths([chrome.runtime.getURL('/images/keyboard.svg')]);
 });
+
+chrome.runtime.sendMessage(injectedMsg());
 
 function handleMessageFromExt(msg: Message) {
   // Proxy messages to the page itself

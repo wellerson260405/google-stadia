@@ -24,10 +24,12 @@ chrome.runtime.onMessage.addListener((msg: Message, sender, sendResponse) => {
   // Receives messages from the content_script
   if (!sender.tab) return false;
   console.log('Connected');
-  if (msg.type === MessageTypes.INITIALIZED) {
+  if (msg.type === MessageTypes.INJECTED) {
+    console.log('Injected');
     chrome.action.enable(sender.tab.id!);
-    updateGameName(msg.gameName);
+  } else if (msg.type === MessageTypes.INITIALIZED) {
     console.log('Initialized');
+    updateGameName(msg.gameName);
     // Send any currently-active config
     getAllStoredSync().then(({ activeConfig, configs }) => {
       const config = !activeConfig ? null : configs[activeConfig];
