@@ -13,6 +13,7 @@
 
 <p align="center">
 <a href="https://chrome.google.com/webstore/detail/keyboard-mouse-for-xbox-x/nmfedkijhhigaikbadoijiolmjjgoimd"><img src="docs/assets/dl_chrome.png" alt="Download for Chrome"></a>
+<a href="https://microsoftedge.microsoft.com/addons/detail/keyboard-mouse-for-xbox/ddgechhgijdmijagmnbhppbogpeflgih"><img src="docs/assets/dl_edge.png" alt="Download for Edge"></a>
 </p>
 
 ***
@@ -58,6 +59,18 @@ But that all changes with this extension!
 
 - Control how sensitive you want mouse movement to be on a per-profile basis
 - (Note you may also need to tweak the control sensitivity in the game options as well for optimal use)
+
+### ✅ Respects your privacy
+
+- No keyboard/mouse data (or any other data for that matter) is ever recorded or sent anywhere from your computer
+- The extension only runs on [xCloud](https://xbox.com/play) and [gamepad-tester.com](https://gamepad-tester.com)
+- But don't take my word for it: the entire extension is [open source](https://github.com/idolize/xcloud-keyboard-mouse), and you can read our (very straightforward) privacy policy [here](https://idolize.github.io/xcloud-keyboard-mouse/privacy.html)
+
+## How to enable
+
+Just install the extension in your browser and go to [xCloud](https://xbox.com/play)! If you want to customize the default preset for your button mappings click the icon in the Extensions toolbar (it may not be pinned by default after install).
+
+You may need to configure the sensitivity in the in-game settings as well (and it is recommended to turn off any "deadzone" options in the game).
 
 ## How it works
 

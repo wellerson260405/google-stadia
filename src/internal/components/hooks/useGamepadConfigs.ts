@@ -4,7 +4,7 @@ import { getActiveConfigName, getAllGamepadConfigs } from '../../state/selectors
 import { useAppDispatch, useAppSelector } from './reduxHooks';
 
 export default function useGamepadConfigs() {
-  const { configs, status } = useAppSelector(getAllGamepadConfigs);
+  const { configs, status, error } = useAppSelector(getAllGamepadConfigs);
   const activeConfig = useAppSelector(getActiveConfigName);
 
   // fetch data if not present
@@ -15,5 +15,5 @@ export default function useGamepadConfigs() {
     }
   }, [dispatch, status]);
 
-  return { activeConfig, configs, status };
+  return { activeConfig, configs, status, error };
 }

@@ -1,4 +1,4 @@
-import { createReducer, isFulfilled, isPending, isRejected } from '@reduxjs/toolkit';
+import { createReducer, isFulfilled, isPending, isRejected, SerializedError } from '@reduxjs/toolkit';
 import { AllMyGamepadConfigs } from '../../shared/types';
 import { defaultGamepadConfig, DEFAULT_CONFIG_NAME } from '../../shared/gamepadConfig';
 import {
@@ -6,12 +6,12 @@ import {
   deleteGamepadConfigAction,
   disableGamepadConfigAction,
   fetchAllAction,
-  fetchGameNameAction,
+  fetchGameStatusAction,
   modifyGamepadConfigAction,
 } from './actions';
 
 export const currentGameReducer = createReducer<string | null>(null, (builder) => {
-  builder.addCase(fetchGameNameAction.fulfilled, (state, action) => action.payload || null);
+  builder.addCase(fetchGameStatusAction.fulfilled, (state, action) => action.payload || null);
 });
 
 export const activeConfigReducer = createReducer<AllMyGamepadConfigs['activeConfig']>(null, (builder) => {
@@ -49,7 +49,8 @@ export type PendingReadWriteStatus = PendingReadStatus | 'writing';
 
 interface PendingStatusesState {
   readAll: PendingReadStatus;
-  gameName: PendingReadStatus;
+  readAllError?: SerializedError;
+  gameStatus: PendingReadStatus;
   configs: Record<string, PendingReadWriteStatus>;
 }
 
@@ -60,7 +61,7 @@ const isWriteAction = (action: { type: string }) =>
 export const pendingStatusesReducer = createReducer<PendingStatusesState>(
   {
     readAll: 'idle',
-    gameName: 'idle',
+    gameStatus: 'idle',
     configs: {},
   },
   (builder) => {
@@ -70,17 +71,18 @@ export const pendingStatusesReducer = createReducer<PendingStatusesState>(
     builder.addCase(fetchAllAction.fulfilled, (state) => {
       state.readAll = 'success';
     });
-    builder.addCase(fetchAllAction.rejected, (state) => {
+    builder.addCase(fetchAllAction.rejected, (state, action) => {
       state.readAll = 'failure';
+      state.readAllError = action.error;
     });
-    builder.addCase(fetchGameNameAction.pending, (state) => {
-      state.gameName = 'reading';
+    builder.addCase(fetchGameStatusAction.pending, (state) => {
+      state.gameStatus = 'reading';
     });
-    builder.addCase(fetchGameNameAction.fulfilled, (state) => {
-      state.gameName = 'success';
+    builder.addCase(fetchGameStatusAction.fulfilled, (state) => {
+      state.gameStatus = 'success';
     });
-    builder.addCase(fetchGameNameAction.rejected, (state) => {
-      state.gameName = 'failure';
+    builder.addCase(fetchGameStatusAction.rejected, (state) => {
+      state.gameStatus = 'failure';
     });
     builder.addMatcher(
       (action) => isWriteAction(action) && isPending(action),

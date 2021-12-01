@@ -14,6 +14,8 @@ interface HeaderProps {
 
 export default function Header({ gameName, activeConfig }: HeaderProps) {
   const dispatch = useAppDispatch();
+  // TODO store the last-active config name in local storage instead of just storing it
+  // in the JS memory as that is frequently purged
   const prevActiveRef = useRef<string>(activeConfig || DEFAULT_CONFIG_NAME);
   useEffect(() => {
     if (activeConfig) {
@@ -47,11 +49,11 @@ export default function Header({ gameName, activeConfig }: HeaderProps) {
         </div>
         <div className="horizontal centered">
           <div className="vertical centered-v left-aligned margin-right">
-            <div>
-              <small>Playing:</small> {gameName || 'None'}
+            <div className="overflow-ellipsis">
+              <small>Playing:</small> <span>{gameName || 'None'}</span>
             </div>
-            <div>
-              <small>Preset:</small> {activeConfig || 'None'}
+            <div className="overflow-ellipsis">
+              <small>Preset:</small> <span>{activeConfig || 'None'}</span>
             </div>
           </div>
           <HeaderMoreOptions />

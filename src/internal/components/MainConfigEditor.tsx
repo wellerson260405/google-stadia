@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Spinner, SpinnerSize } from '@fluentui/react';
+import { SerializedError } from '@reduxjs/toolkit';
 import { GamepadConfig } from '../../shared/types';
 import { DEFAULT_CONFIG_NAME } from '../../shared/gamepadConfig';
 import GamepadConfigEditor from './GamepadConfigEditor';
@@ -7,15 +8,23 @@ import GamepadConfigSelector from './GamepadConfigSelector';
 import { useAppDispatch } from './hooks/reduxHooks';
 import { deleteGamepadConfigAction, modifyGamepadConfigAction, activateGamepadConfigAction } from '../state/actions';
 import { PendingReadStatus } from '../state/reducers';
+import ErrorDetails from './ErrorDetails';
 
 interface MainConfigEditorProps {
   activeConfig: string | null;
   status: PendingReadStatus;
+  error?: SerializedError;
   configs: Record<string, GamepadConfig>;
   initialConfig: string;
 }
 
-export default function MainConfigEditor({ activeConfig, initialConfig, configs, status }: MainConfigEditorProps) {
+export default function MainConfigEditor({
+  activeConfig,
+  initialConfig,
+  configs,
+  status,
+  error,
+}: MainConfigEditorProps) {
   const dispatch = useAppDispatch();
   const [currentConfig, setCurrentConfig] = useState(initialConfig);
 
@@ -54,12 +63,11 @@ export default function MainConfigEditor({ activeConfig, initialConfig, configs,
   return (
     <div className="box margin-full vertical full-height">
       {status === 'failure' ? (
-        <div className="error">Failed to load data</div>
+        <ErrorDetails error={error} />
       ) : status !== 'success' ? (
         <Spinner size={SpinnerSize.large} />
       ) : (
         <div className="vertical full-height">
-          {/* TODO checkbox to disable/enable completely (disableGamepadConfigAction) */}
           <GamepadConfigSelector
             className="padding-bottom-s"
             activeConfig={activeConfig}

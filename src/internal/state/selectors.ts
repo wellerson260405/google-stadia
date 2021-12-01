@@ -4,6 +4,7 @@ export const getAllGamepadConfigs = (state: RootState) => {
   return {
     configs: state.configs,
     status: state.pending.readAll,
+    error: state.pending.readAllError,
   };
 };
 
@@ -25,6 +26,6 @@ export const isConfigActive = (state: RootState, name: string): boolean => {
 export const getGameName = (state: RootState) => {
   return {
     gameName: state.gameName,
-    status: state.pending.gameName,
+    status: state.pending.gameStatus,
   };
 };

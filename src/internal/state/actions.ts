@@ -7,7 +7,7 @@ import { RootState } from './store';
 import {
   deleteGamepadConfig,
   getAllStoredSync,
-  getGameName,
+  getLocalGameStatus,
   storeActiveGamepadConfig,
   storeGamepadConfig,
 } from './chromeStoredData';
@@ -20,7 +20,7 @@ const sendMessage = (msg: Message) => {
   port.postMessage(msg);
 };
 
-export const fetchGameNameAction = createAsyncThunk('meta/gameName', getGameName);
+export const fetchGameStatusAction = createAsyncThunk('meta/gameStatus', getLocalGameStatus);
 
 export const fetchAllAction = createAsyncThunk('config/fetchAll', getAllStoredSync);
 

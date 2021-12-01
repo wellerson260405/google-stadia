@@ -1,9 +1,11 @@
 const _webpack = require('webpack');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
+const BuildManifestPlugin = require('./webpack.manifest');
+
 const srcDir = path.join(__dirname, '..', 'src');
 
-module.exports = {
+module.exports = (env) => ({
   entry: {
     popup: path.join(srcDir, 'popup.tsx'),
     background: path.join(srcDir, 'background.ts'),
@@ -43,5 +45,9 @@ module.exports = {
       patterns: [{ from: '.', to: '../', context: 'public' }],
       options: {},
     }),
+    new BuildManifestPlugin({
+      browser: env.browser,
+      pretty: env.mode === 'production',
+    }),
   ],
-};
+});

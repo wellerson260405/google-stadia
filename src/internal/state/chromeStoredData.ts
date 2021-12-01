@@ -19,7 +19,7 @@ export function updateGameName(gameName: string | null) {
   return chrome.storage.local.set({ [LocalStorageKeys.GAME_NAME]: gameName });
 }
 
-export async function getGameName(): Promise<string | null> {
+export async function getLocalGameStatus(): Promise<string | null> {
   const keys = await chrome.storage.local.get(LocalStorageKeys.GAME_NAME);
   return keys[LocalStorageKeys.GAME_NAME] || null;
 }
@@ -66,7 +66,6 @@ function normalizeGamepadConfigs(data: Record<string, any>): AllMyGamepadConfigs
   };
 }
 
-// TODO keep a global cache of this somewhere
 export async function getAllStoredSync() {
   const data = await chrome.storage.sync.get(null);
   return normalizeGamepadConfigs(data);

@@ -18,7 +18,7 @@ interface GamepadConfigSelectorProps {
 function ConfigTitle({ name, status }: { name: string; status?: 'New' | 'Active' | false }) {
   return (
     <div className="vertical centered">
-      <span className={classnames(status && 'selector-active')}>{name}</span>
+      <span className={classnames('overflow-ellipsis', status && 'selector-active')}>{name}</span>
       {status ? <small>({status})</small> : null}
     </div>
   );

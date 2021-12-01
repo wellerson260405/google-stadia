@@ -24,7 +24,6 @@ export function injectCssFile(file: string) {
 }
 
 export function injectImagePaths(files: string[]) {
-  // TODO create a dom node wih string body
   const meta = document.createElement('meta');
   meta.name = META_IMAGE_PATHS;
   meta.content = files.join(',');

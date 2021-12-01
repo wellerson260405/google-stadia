@@ -174,6 +174,10 @@ export function enableSimulator(enable: boolean) {
   }
 }
 
+export function isEnabled() {
+  return useFakeController;
+}
+
 export function resetGamepadGlobals() {
   (window as any).gamepadSimulator = null;
   navigator.getGamepads = origGetGamepads;
