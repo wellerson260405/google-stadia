@@ -12,8 +12,8 @@
 ***
 
 <p align="center">
-<a href="https://chrome.google.com/webstore/detail/keyboard-mouse-for-xbox-x/nmfedkijhhigaikbadoijiolmjjgoimd"><img src="docs/assets/dl_chrome.png" alt="Download for Chrome"></a>
-<a href="https://microsoftedge.microsoft.com/addons/detail/keyboard-mouse-for-xbox/ddgechhgijdmijagmnbhppbogpeflgih"><img src="docs/assets/dl_edge.png" alt="Download for Edge"></a>
+<a href="https://chrome.google.com/webstore/detail/keyboard-mouse-for-xbox-x/nmfedkijhhigaikbadoijiolmjjgoimd"><img src="docs/assets/dl_chrome.png" height="58" alt="Download for Chrome"></a>
+<a href="https://microsoftedge.microsoft.com/addons/detail/keyboard-mouse-for-xbox/ddgechhgijdmijagmnbhppbogpeflgih"><img src="docs/assets/dl_edge.png" height="58" alt="Download for Edge"></a>
 </p>
 
 ***
