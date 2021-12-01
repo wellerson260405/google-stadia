@@ -54,8 +54,8 @@
   position: fixed;
   z-index: 150;
   left: 50%;
-  top: 30px;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Animations to fade the snackbar in and out */
