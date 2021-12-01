@@ -1,0 +1,58 @@
+name: Upload Release to Stores
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+
+    name: Upload release
+    runs-on: ubuntu-latest
+
+    steps:
+      # Initialization
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: npm ci
+      - name: Copy configuration
+        run: cp config.json.example config.json
+
+      # Create Chrome artifacts
+      - name: Create Chrome artifacts
+        run: npm run build:chrome
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ChromeExtension
+          path: dist
+      - run: mkdir ./builds
+      - name: Zip Artifacts
+        run: cd ./dist && zip -r ../builds/ChromeExtension.zip *
+
+      # Create Edge artifacts
+      - name: Create Edge artifacts
+        run: npm run build:edge
+      - uses: actions/upload-artifact@v2
+        with:
+          name: EdgeExtension
+          path: dist
+      - name: Zip Artifacts
+        run: cd ./dist && zip -r ../builds/EdgeExtension.zip *
+
+      # Upload each release asset
+      - name: Upload ChromeExtension to release
+        uses: Shopify/upload-to-release@master
+        with:
+          args: builds/ChromeExtension.zip
+          name: ChromeExtension.zip
+          path: ./builds/ChromeExtension.zip
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload EdgeExtension to release
+        uses: Shopify/upload-to-release@master
+        with:
+          args: builds/EdgeExtension.zip
+          name: EdgeExtension.zip
+          path: ./builds/EdgeExtension.zip
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
