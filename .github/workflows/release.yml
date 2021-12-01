@@ -1,4 +1,9 @@
-name: Upload Release to Stores
+# This workflow will generate all artifacts required for a Release,
+# which can be downloaded from GitHub and then uploaded to the various
+# browser "extension stores"
+# See: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#release
+
+name: Upload Release Artifacts
 
 on:
   release:
