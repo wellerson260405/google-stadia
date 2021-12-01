@@ -123,7 +123,7 @@ function listenKeyboard(codeMapping: Record<string, CodeMap>) {
 
   listeners.keydown = function keyDown(e) {
     const handled = handleKeyEvent((e as KeyboardEvent).code, simulateBtnPress, simulateAxeDirPress);
-    if (handled) e.preventDefault();
+    if (handled && e.cancelable) e.preventDefault();
   };
   listeners.keyup = function keyUp(e) {
     handleKeyEvent((e as KeyboardEvent).code, simulateBtnUnpress, simulateAxeDirUnpress);
@@ -156,7 +156,7 @@ function listenKeyboard(codeMapping: Record<string, CodeMap>) {
     listeners.wheel = function wheel(e) {
       const handled = handleKeyEvent('Scroll', simulateBtnPress, simulateAxeDirPress);
       if (handled) {
-        e.preventDefault();
+        if (e.cancelable) e.preventDefault();
         clearTimeout(stopScrollTimer);
         stopScrollTimer = setTimeout(() => {
           handleKeyEvent('Scroll', simulateBtnUnpress, simulateAxeDirUnpress);

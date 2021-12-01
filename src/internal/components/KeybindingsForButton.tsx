@@ -33,7 +33,7 @@ function KeybindingsForButton({ button, value, onChange, readOnly, error, useSpa
 
   const handleMouseDown: MouseEventHandler<HTMLDivElement> = useCallback(
     (e) => {
-      e.preventDefault();
+      if (e.cancelable) e.preventDefault();
       const { button: mouseButton } = e;
       if (mouseButton === 0 || mouseButton === 2) {
         const code = mouseButton === 0 ? 'Click' : 'RightClick';
@@ -49,7 +49,7 @@ function KeybindingsForButton({ button, value, onChange, readOnly, error, useSpa
 
   const handleWheel: WheelEventHandler<HTMLDivElement> = useCallback(
     (e) => {
-      e.preventDefault();
+      if (e.cancelable) e.preventDefault();
       const code = 'Scroll';
       if (codes.indexOf(code) === -1) {
         onChange(button, codes.concat([code]));
@@ -63,7 +63,7 @@ function KeybindingsForButton({ button, value, onChange, readOnly, error, useSpa
     if (readOnly) return;
     setIsListening(true);
     keyListener.current = function onKeyDown(e: KeyboardEvent) {
-      e.preventDefault();
+      if (e.cancelable) e.preventDefault();
       const { code } = e;
       if (code !== 'Escape' && codes.indexOf(code) === -1) {
         onChange(button, codes.concat([code]));
