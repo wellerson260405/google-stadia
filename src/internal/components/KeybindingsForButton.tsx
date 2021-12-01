@@ -1,4 +1,4 @@
-import React, { memo, MouseEventHandler, useCallback, useMemo, useRef, useState } from 'react';
+import React, { memo, MouseEventHandler, useCallback, useMemo, useRef, useState, WheelEventHandler } from 'react';
 import { IconButton, TooltipHost, DirectionalHint } from '@fluentui/react';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
@@ -47,6 +47,18 @@ function KeybindingsForButton({ button, value, onChange, readOnly, error, useSpa
     [button, codes, handleCancelListen, onChange],
   );
 
+  const handleWheel: WheelEventHandler<HTMLDivElement> = useCallback(
+    (e) => {
+      e.preventDefault();
+      const code = 'Scroll';
+      if (codes.indexOf(code) === -1) {
+        onChange(button, codes.concat([code]));
+      }
+      handleCancelListen();
+    },
+    [button, codes, handleCancelListen, onChange],
+  );
+
   const handleClickAdd = useCallback(() => {
     if (readOnly) return;
     setIsListening(true);
@@ -86,6 +98,7 @@ function KeybindingsForButton({ button, value, onChange, readOnly, error, useSpa
         className="vertical centered unselectable"
         style={{ width: '60vw', height: '50vh', padding: 20 }}
         onMouseDown={isListening ? handleMouseDown : undefined}
+        onWheel={isListening ? handleWheel : undefined}
       >
         <h3>Press any key or click to bind...</h3>
         <p>(Press Esc to cancel)</p>

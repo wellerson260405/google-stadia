@@ -18,6 +18,7 @@ const listeners = {
   mousemove: null as null | EventListener,
   mousedown: null as null | EventListener,
   mouseup: null as null | EventListener,
+  wheel: null as null | EventListener,
 };
 
 const getParentElement = () => {
@@ -38,9 +39,7 @@ function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITIVITY) {
   const parentElement = getParentElement();
   const handleMouseMove = () => {
     needRaf = true;
-    if (stopMovingTimer) {
-      clearTimeout(stopMovingTimer);
-    }
+    clearTimeout(stopMovingTimer);
     stopMovingTimer = setTimeout(() => {
       simulateAxeMove(axe, 0, 0);
     }, 200);
@@ -102,6 +101,7 @@ function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITIVITY) {
 }
 
 function listenKeyboard(codeMapping: Record<string, CodeMap>) {
+  let stopScrollTimer: any;
   const handleKeyEvent = (
     code: string,
     buttonFn: (index: number) => void,
@@ -151,6 +151,20 @@ function listenKeyboard(codeMapping: Record<string, CodeMap>) {
     parentElement.addEventListener('mousedown', listeners.mousedown);
     parentElement.addEventListener('mouseup', listeners.mouseup);
   }
+  if (codeMapping.Scroll) {
+    const parentElement = getParentElement();
+    listeners.wheel = function wheel(e) {
+      const handled = handleKeyEvent('Scroll', simulateBtnPress, simulateAxeDirPress);
+      if (handled) {
+        e.preventDefault();
+        clearTimeout(stopScrollTimer);
+        stopScrollTimer = setTimeout(() => {
+          handleKeyEvent('Scroll', simulateBtnUnpress, simulateAxeDirUnpress);
+        }, 20);
+      }
+    };
+    parentElement.addEventListener('wheel', listeners.wheel);
+  }
 }
 
 function unlistenKeyboard() {
@@ -166,6 +180,9 @@ function unlistenKeyboard() {
   }
   if (listeners.mouseup) {
     parentElement.removeEventListener('mouseup', listeners.mouseup);
+  }
+  if (listeners.wheel) {
+    parentElement.removeEventListener('wheel', listeners.wheel);
   }
 }
 
