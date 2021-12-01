@@ -1,8 +1,13 @@
-import { IconButton } from '@fluentui/react';
+import { IconButton, IContextualMenuItem } from '@fluentui/react';
 import React from 'react';
 import { fluentXboxTheme } from './theme';
 
-const menuItems = [
+const menuItems: IContextualMenuItem[] = [
+  {
+    key: 'version',
+    text: `Version ${chrome.runtime.getManifest().version}`,
+    disabled: true,
+  },
   {
     key: 'about',
     text: 'About',

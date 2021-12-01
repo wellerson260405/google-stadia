@@ -108,7 +108,7 @@ html, body {
   font-weight: 600;
 }
 
-.error {
+.error, .error a {
   fill: #cc1111;
   color: #cc1111;
 }
