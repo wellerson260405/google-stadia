@@ -42,7 +42,7 @@ function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITIVITY) {
     clearTimeout(stopMovingTimer);
     stopMovingTimer = setTimeout(() => {
       simulateAxeMove(axe, 0, 0);
-    }, 200);
+    }, 50);
     // trigger the joystick on move
     // TODO scale based on viewport size? Does this matter?
     // (i.e. will a user move mouse fewer pixels if they are playing in a smaller viewport?)
