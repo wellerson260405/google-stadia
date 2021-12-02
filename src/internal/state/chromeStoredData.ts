@@ -20,8 +20,8 @@ export function updateGameName(gameName: string | null) {
 }
 
 export async function getLocalGameStatus(): Promise<string | null> {
-  const keys = await chrome.storage.local.get(LocalStorageKeys.GAME_NAME);
-  return keys[LocalStorageKeys.GAME_NAME] || null;
+  const data = await chrome.storage.local.get(LocalStorageKeys.GAME_NAME);
+  return (data && data[LocalStorageKeys.GAME_NAME]) || null;
 }
 
 /**
@@ -50,8 +50,8 @@ export function storeActiveGamepadConfig(name: string | null) {
   return chrome.storage.sync.set({ [SyncStorageKeys.ACTIVE_GAMEPAD_CONFIG]: name });
 }
 
-function normalizeGamepadConfigs(data: Record<string, any>): AllMyGamepadConfigs {
-  const activeConfig = data[SyncStorageKeys.ACTIVE_GAMEPAD_CONFIG];
+function normalizeGamepadConfigs(data: Record<string, any> = {}): AllMyGamepadConfigs {
+  const activeConfig = data[SyncStorageKeys.ACTIVE_GAMEPAD_CONFIG] || null;
   const keys = Object.keys(data).filter((key) => key.startsWith(SyncStorageKeys.GAMEPAD_CONFIGS));
   const initialConfigsMap: AllMyGamepadConfigs['configs'] = {
     [DEFAULT_CONFIG_NAME]: defaultGamepadConfig,
