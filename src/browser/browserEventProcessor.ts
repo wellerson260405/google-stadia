@@ -13,7 +13,7 @@ import { Direction, GamepadConfig, StickNum } from '../shared/types';
 const listeners = {
   keydown: null as null | EventListener,
   keyup: null as null | EventListener,
-  clickElement: null as null | HTMLDivElement,
+  clickToEnableMouse: null as null | ReturnType<typeof createClickElement>,
   pointerlockchange: null as null | EventListener,
   mousemove: null as null | EventListener,
   mousedown: null as null | EventListener,
@@ -26,8 +26,8 @@ const getParentElement = () => {
 };
 
 const mouseLockError = () => {
-  if (listeners.clickElement) {
-    listeners.clickElement.innerText = secondClickText;
+  if (listeners.clickToEnableMouse) {
+    listeners.clickToEnableMouse.text.innerText = secondClickText;
   }
 };
 
@@ -68,21 +68,21 @@ function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITIVITY) {
   listeners.pointerlockchange = function onPointerLockChange() {
     if (!listeners.mousemove) return;
     if (document.pointerLockElement) {
-      listeners.clickElement?.remove();
+      listeners.clickToEnableMouse?.clickElement.remove();
       document.addEventListener('mousemove', listeners.mousemove);
     } else {
       clearTimeout(stopMovingTimer);
       document.removeEventListener('mousemove', listeners.mousemove);
       // show click element again
-      listeners.clickElement!.innerText = firstClickText;
-      parentElement.appendChild(listeners.clickElement!);
+      listeners.clickToEnableMouse!.text.innerText = firstClickText;
+      parentElement.appendChild(listeners.clickToEnableMouse!.clickElement);
     }
   };
   document.addEventListener('pointerlockchange', listeners.pointerlockchange);
   document.addEventListener('pointerlockerror', mouseLockError);
-  listeners.clickElement = createClickElement();
-  parentElement.appendChild(listeners.clickElement);
-  listeners.clickElement.addEventListener('mousedown', function onClick(e) {
+  listeners.clickToEnableMouse = createClickElement();
+  parentElement.appendChild(listeners.clickToEnableMouse.clickElement);
+  listeners.clickToEnableMouse.clickElement.addEventListener('mousedown', function onClick(e) {
     // Note: make sure the game stream is still in focus or the game will pause input!
     e.preventDefault(); // prevent bluring when clicked
     const req: any = parentElement.requestPointerLock();
@@ -188,7 +188,7 @@ function unlistenKeyboard() {
 
 function unlistenMouseMove() {
   document.exitPointerLock();
-  listeners.clickElement?.remove();
+  listeners.clickToEnableMouse?.clickElement.remove();
 }
 
 function unlistenAll() {
