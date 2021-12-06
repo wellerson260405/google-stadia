@@ -7,6 +7,7 @@ export function createClickElement(isMinimized = false) {
   const minimize = document.createElement('div');
   minimize.className = 'minimize-btn';
   minimize.innerText = isMinimized ? '+' : '-';
+  minimize.title = 'Minimize/maximize';
   const text = document.createElement('span');
   text.innerText = firstClickText;
   if (isMinimized) {
