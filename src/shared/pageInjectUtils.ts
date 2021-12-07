@@ -39,8 +39,8 @@ export function getInjectedImagePaths(): Record<string, string> {
     if (content) {
       const vals = content.split(',');
       imagePaths = vals.reduce((acc, val) => {
-        const exec = /(?<=\/)[^/?#]+(?=[^/]*$)/.exec(val);
-        const fileName = exec && exec[0];
+        const exec = /(?:.+\/)(.+)/.exec(val);
+        const fileName = exec && exec[1];
         if (fileName) {
           acc[fileName] = val;
         }

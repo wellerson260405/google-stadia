@@ -3,6 +3,7 @@ import React, { FormEventHandler, memo, useCallback, useEffect, useState } from 
 import { DEFAULT_CONFIG_NAME, emptyGamepadConfig } from '../../shared/gamepadConfig';
 import { GamepadConfig, KeyMap, StickNum } from '../../shared/types';
 import { getGamepadConfig, isConfigActive } from '../state/selectors';
+import { confirm } from '../utils/confirmUtil';
 import { useAppSelector } from './hooks/reduxHooks';
 import SensitivitySelector from './SensitivitySelector';
 import StickSelector from './StickSelector';
@@ -70,10 +71,12 @@ function GamepadConfigEditor({ name, onSubmitChanges, onCancelCreate, onActivate
       }
       return;
     }
-    setIsEditing(!isEditing);
     if (isEditing && (!hasChanges || confirm('Are you sure you want to cancel? You will lose any changes.'))) {
       // Reset
       dispatch({ type: 'reset', config: storedGamepadConfig });
+      setIsEditing(!isEditing);
+    } else if (!isEditing) {
+      setIsEditing(!isEditing);
     }
   }, [dispatch, hasChanges, isEditing, isNewDraft, onCancelCreate, storedGamepadConfig]);
 

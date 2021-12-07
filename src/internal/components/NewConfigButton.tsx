@@ -52,11 +52,13 @@ export default function NewConfigButton({ disabled, onCreate, allConfigs }: NewC
       </IconButton>
       {isOpen ? (
         <Callout
-          directionalHint={DirectionalHint.bottomRightEdge}
+          setInitialFocus
           gapSpace={0}
+          directionalHint={DirectionalHint.bottomRightEdge}
           target={`#${buttonId}`}
           onDismiss={handleClose}
-          setInitialFocus
+          // Needed to fix issue in Safari
+          preventDismissOnEvent={(e) => e.type === 'resize'}
         >
           <div style={{ width: 200 }} className="padding-full">
             <TextField

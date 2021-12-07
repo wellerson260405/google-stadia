@@ -36,6 +36,8 @@ class BuildManifestPlugin {
     // Add additional manifest data
     if (this.opts.browser.toLowerCase() === 'edge') {
       mergeConfigs(manifestBase, edgeManifestExtra);
+    } else if (this.opts.browser.toLowerCase() === 'safari') {
+      convertV3ToV2(manifestBase);
     }
     const output = this.opts.prettyPrint ? JSON.stringify(manifestBase, null, 2) : JSON.stringify(manifestBase);
     fs.mkdirSync(distFolderPath, { recursive: true });
@@ -56,6 +58,17 @@ function mergeConfigs(conf1, conf2) {
     }
     conf1[key] = conf2[key];
   }
+}
+
+function convertV3ToV2(conf) {
+  conf.manifest_version = 2;
+  conf.web_accessible_resources = conf.web_accessible_resources[0].resources;
+  conf.background = {
+    scripts: [conf.background.service_worker],
+    persistent: false,
+  };
+  conf.browser_action = conf.action;
+  delete conf.action;
 }
 
 module.exports = BuildManifestPlugin;

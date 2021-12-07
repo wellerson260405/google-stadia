@@ -44,6 +44,10 @@ export default function HeaderMoreOptions() {
       menuProps={{
         items: menuItems,
         theme: fluentXboxTheme,
+        calloutProps: {
+          // Needed to fix issue in Safari
+          preventDismissOnEvent: (e) => e.type === 'resize',
+        },
       }}
       role="menuitem"
       title="More options"
