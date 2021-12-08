@@ -1,0 +1,989 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D5456A3F275C5F3900034D5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5456A3E275C5F3900034D5B /* AppDelegate.swift */; };
+		D5456A41275C5F3900034D5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5456A40275C5F3900034D5B /* SceneDelegate.swift */; };
+		D5456A44275C5F3900034D5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5456A42275C5F3900034D5B /* LaunchScreen.storyboard */; };
+		D5456A47275C5F3900034D5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5456A45275C5F3900034D5B /* Main.storyboard */; };
+		D5456A50275C5F3900034D5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5456A4F275C5F3900034D5B /* AppDelegate.swift */; };
+		D5456A53275C5F3900034D5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5456A51275C5F3900034D5B /* Main.storyboard */; };
+		D5456A5B275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D5456A5A275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D5456A65275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D5456A64275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D5456A6B275C5F3900034D5B /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = D5456A2E275C5F3900034D5B /* Main.html */; };
+		D5456A6C275C5F3900034D5B /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = D5456A2E275C5F3900034D5B /* Main.html */; };
+		D5456A6D275C5F3900034D5B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A30275C5F3900034D5B /* Icon.png */; };
+		D5456A6E275C5F3900034D5B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A30275C5F3900034D5B /* Icon.png */; };
+		D5456A6F275C5F3900034D5B /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = D5456A31275C5F3900034D5B /* Style.css */; };
+		D5456A70275C5F3900034D5B /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = D5456A31275C5F3900034D5B /* Style.css */; };
+		D5456A71275C5F3900034D5B /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = D5456A32275C5F3900034D5B /* Script.js */; };
+		D5456A72275C5F3900034D5B /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = D5456A32275C5F3900034D5B /* Script.js */; };
+		D5456A73275C5F3900034D5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5456A33275C5F3900034D5B /* ViewController.swift */; };
+		D5456A74275C5F3900034D5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5456A33275C5F3900034D5B /* ViewController.swift */; };
+		D5456A75275C5F3900034D5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5456A34275C5F3900034D5B /* Assets.xcassets */; };
+		D5456A76275C5F3900034D5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5456A34275C5F3900034D5B /* Assets.xcassets */; };
+		D5456A77275C5F3900034D5B /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5456A36275C5F3900034D5B /* SafariWebExtensionHandler.swift */; };
+		D5456A78275C5F3900034D5B /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5456A36275C5F3900034D5B /* SafariWebExtensionHandler.swift */; };
+		D5456A96275C5F3900034D5B /* icon-16.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A8A275C5F3900034D5B /* icon-16.png */; };
+		D5456A97275C5F3900034D5B /* icon-256.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A8B275C5F3900034D5B /* icon-256.png */; };
+		D5456A98275C5F3900034D5B /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = D5456A8C275C5F3900034D5B /* about.html */; };
+		D5456A99275C5F3900034D5B /* css in Resources */ = {isa = PBXBuildFile; fileRef = D5456A8D275C5F3900034D5B /* css */; };
+		D5456A9A275C5F3900034D5B /* images in Resources */ = {isa = PBXBuildFile; fileRef = D5456A8E275C5F3900034D5B /* images */; };
+		D5456A9B275C5F3900034D5B /* js in Resources */ = {isa = PBXBuildFile; fileRef = D5456A8F275C5F3900034D5B /* js */; };
+		D5456A9C275C5F3900034D5B /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = D5456A90275C5F3900034D5B /* popup.html */; };
+		D5456A9D275C5F3900034D5B /* icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A91275C5F3900034D5B /* icon-48.png */; };
+		D5456A9E275C5F3900034D5B /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = D5456A92275C5F3900034D5B /* manifest.json */; };
+		D5456A9F275C5F3900034D5B /* icon-128.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A93275C5F3900034D5B /* icon-128.png */; };
+		D5456AA0275C5F3900034D5B /* icon-32.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A94275C5F3900034D5B /* icon-32.png */; };
+		D5456AA1275C5F3900034D5B /* icon-24.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A95275C5F3900034D5B /* icon-24.png */; };
+		D5456AA2275C5F3900034D5B /* icon-16.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A8A275C5F3900034D5B /* icon-16.png */; };
+		D5456AA3275C5F3900034D5B /* icon-256.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A8B275C5F3900034D5B /* icon-256.png */; };
+		D5456AA4275C5F3900034D5B /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = D5456A8C275C5F3900034D5B /* about.html */; };
+		D5456AA5275C5F3900034D5B /* css in Resources */ = {isa = PBXBuildFile; fileRef = D5456A8D275C5F3900034D5B /* css */; };
+		D5456AA6275C5F3900034D5B /* images in Resources */ = {isa = PBXBuildFile; fileRef = D5456A8E275C5F3900034D5B /* images */; };
+		D5456AA7275C5F3900034D5B /* js in Resources */ = {isa = PBXBuildFile; fileRef = D5456A8F275C5F3900034D5B /* js */; };
+		D5456AA8275C5F3900034D5B /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = D5456A90275C5F3900034D5B /* popup.html */; };
+		D5456AA9275C5F3900034D5B /* icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A91275C5F3900034D5B /* icon-48.png */; };
+		D5456AAA275C5F3900034D5B /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = D5456A92275C5F3900034D5B /* manifest.json */; };
+		D5456AAB275C5F3900034D5B /* icon-128.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A93275C5F3900034D5B /* icon-128.png */; };
+		D5456AAC275C5F3900034D5B /* icon-32.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A94275C5F3900034D5B /* icon-32.png */; };
+		D5456AAD275C5F3900034D5B /* icon-24.png in Resources */ = {isa = PBXBuildFile; fileRef = D5456A95275C5F3900034D5B /* icon-24.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D5456A5C275C5F3900034D5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5456A28275C5F3800034D5B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D5456A59275C5F3900034D5B;
+			remoteInfo = "Keyboard & Mouse for Xbox xCloud Extension (iOS)";
+		};
+		D5456A66275C5F3900034D5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5456A28275C5F3800034D5B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D5456A63275C5F3900034D5B;
+			remoteInfo = "Keyboard & Mouse for Xbox xCloud Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D5456A7E275C5F3900034D5B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D5456A5B275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5456A85275C5F3900034D5B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D5456A65275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D5456A2F275C5F3900034D5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
+		D5456A30275C5F3900034D5B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		D5456A31275C5F3900034D5B /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		D5456A32275C5F3900034D5B /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		D5456A33275C5F3900034D5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D5456A34275C5F3900034D5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D5456A36275C5F3900034D5B /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		D5456A3B275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Keyboard & Mouse for Xbox xCloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5456A3E275C5F3900034D5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D5456A40275C5F3900034D5B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D5456A43275C5F3900034D5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D5456A46275C5F3900034D5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D5456A48275C5F3900034D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5456A4D275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Keyboard & Mouse for Xbox xCloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5456A4F275C5F3900034D5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D5456A52275C5F3900034D5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D5456A54275C5F3900034D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5456A55275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Keyboard & Mouse for Xbox xCloud.entitlements"; sourceTree = "<group>"; };
+		D5456A5A275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Keyboard & Mouse for Xbox xCloud Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5456A5F275C5F3900034D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5456A64275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Keyboard & Mouse for Xbox xCloud Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5456A69275C5F3900034D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5456A6A275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Keyboard & Mouse for Xbox xCloud.entitlements"; sourceTree = "<group>"; };
+		D5456A8A275C5F3900034D5B /* icon-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-16.png"; path = "../../../dist/icon-16.png"; sourceTree = "<group>"; };
+		D5456A8B275C5F3900034D5B /* icon-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-256.png"; path = "../../../dist/icon-256.png"; sourceTree = "<group>"; };
+		D5456A8C275C5F3900034D5B /* about.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = about.html; path = ../../../dist/about.html; sourceTree = "<group>"; };
+		D5456A8D275C5F3900034D5B /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; name = css; path = ../../../dist/css; sourceTree = "<group>"; };
+		D5456A8E275C5F3900034D5B /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../../../dist/images; sourceTree = "<group>"; };
+		D5456A8F275C5F3900034D5B /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; name = js; path = ../../../dist/js; sourceTree = "<group>"; };
+		D5456A90275C5F3900034D5B /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = popup.html; path = ../../../dist/popup.html; sourceTree = "<group>"; };
+		D5456A91275C5F3900034D5B /* icon-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-48.png"; path = "../../../dist/icon-48.png"; sourceTree = "<group>"; };
+		D5456A92275C5F3900034D5B /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../../dist/manifest.json; sourceTree = "<group>"; };
+		D5456A93275C5F3900034D5B /* icon-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-128.png"; path = "../../../dist/icon-128.png"; sourceTree = "<group>"; };
+		D5456A94275C5F3900034D5B /* icon-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-32.png"; path = "../../../dist/icon-32.png"; sourceTree = "<group>"; };
+		D5456A95275C5F3900034D5B /* icon-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-24.png"; path = "../../../dist/icon-24.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D5456A38275C5F3900034D5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5456A4A275C5F3900034D5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5456A57275C5F3900034D5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5456A61275C5F3900034D5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D5456A27275C5F3800034D5B = {
+			isa = PBXGroup;
+			children = (
+				D5456A2C275C5F3900034D5B /* Shared (App) */,
+				D5456A35275C5F3900034D5B /* Shared (Extension) */,
+				D5456A3D275C5F3900034D5B /* iOS (App) */,
+				D5456A4E275C5F3900034D5B /* macOS (App) */,
+				D5456A5E275C5F3900034D5B /* iOS (Extension) */,
+				D5456A68275C5F3900034D5B /* macOS (Extension) */,
+				D5456A3C275C5F3900034D5B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D5456A2C275C5F3900034D5B /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				D5456A33275C5F3900034D5B /* ViewController.swift */,
+				D5456A34275C5F3900034D5B /* Assets.xcassets */,
+				D5456A2D275C5F3900034D5B /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		D5456A2D275C5F3900034D5B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D5456A2E275C5F3900034D5B /* Main.html */,
+				D5456A30275C5F3900034D5B /* Icon.png */,
+				D5456A31275C5F3900034D5B /* Style.css */,
+				D5456A32275C5F3900034D5B /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D5456A35275C5F3900034D5B /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				D5456A89275C5F3900034D5B /* Resources */,
+				D5456A36275C5F3900034D5B /* SafariWebExtensionHandler.swift */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		D5456A3C275C5F3900034D5B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D5456A3B275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud.app */,
+				D5456A4D275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud.app */,
+				D5456A5A275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension.appex */,
+				D5456A64275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D5456A3D275C5F3900034D5B /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				D5456A3E275C5F3900034D5B /* AppDelegate.swift */,
+				D5456A40275C5F3900034D5B /* SceneDelegate.swift */,
+				D5456A42275C5F3900034D5B /* LaunchScreen.storyboard */,
+				D5456A45275C5F3900034D5B /* Main.storyboard */,
+				D5456A48275C5F3900034D5B /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		D5456A4E275C5F3900034D5B /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				D5456A4F275C5F3900034D5B /* AppDelegate.swift */,
+				D5456A51275C5F3900034D5B /* Main.storyboard */,
+				D5456A54275C5F3900034D5B /* Info.plist */,
+				D5456A55275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud.entitlements */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		D5456A5E275C5F3900034D5B /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				D5456A5F275C5F3900034D5B /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		D5456A68275C5F3900034D5B /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				D5456A69275C5F3900034D5B /* Info.plist */,
+				D5456A6A275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud.entitlements */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		D5456A89275C5F3900034D5B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D5456A8A275C5F3900034D5B /* icon-16.png */,
+				D5456A8B275C5F3900034D5B /* icon-256.png */,
+				D5456A8C275C5F3900034D5B /* about.html */,
+				D5456A8D275C5F3900034D5B /* css */,
+				D5456A8E275C5F3900034D5B /* images */,
+				D5456A8F275C5F3900034D5B /* js */,
+				D5456A90275C5F3900034D5B /* popup.html */,
+				D5456A91275C5F3900034D5B /* icon-48.png */,
+				D5456A92275C5F3900034D5B /* manifest.json */,
+				D5456A93275C5F3900034D5B /* icon-128.png */,
+				D5456A94275C5F3900034D5B /* icon-32.png */,
+				D5456A95275C5F3900034D5B /* icon-24.png */,
+			);
+			name = Resources;
+			path = "Shared (Extension)";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D5456A3A275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5456A7F275C5F3900034D5B /* Build configuration list for PBXNativeTarget "Keyboard & Mouse for Xbox xCloud (iOS)" */;
+			buildPhases = (
+				D5456A37275C5F3900034D5B /* Sources */,
+				D5456A38275C5F3900034D5B /* Frameworks */,
+				D5456A39275C5F3900034D5B /* Resources */,
+				D5456A7E275C5F3900034D5B /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D5456A5D275C5F3900034D5B /* PBXTargetDependency */,
+			);
+			name = "Keyboard & Mouse for Xbox xCloud (iOS)";
+			productName = "Keyboard & Mouse for Xbox xCloud (iOS)";
+			productReference = D5456A3B275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D5456A4C275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5456A86275C5F3900034D5B /* Build configuration list for PBXNativeTarget "Keyboard & Mouse for Xbox xCloud (macOS)" */;
+			buildPhases = (
+				D5456A49275C5F3900034D5B /* Sources */,
+				D5456A4A275C5F3900034D5B /* Frameworks */,
+				D5456A4B275C5F3900034D5B /* Resources */,
+				D5456A85275C5F3900034D5B /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D5456A67275C5F3900034D5B /* PBXTargetDependency */,
+			);
+			name = "Keyboard & Mouse for Xbox xCloud (macOS)";
+			productName = "Keyboard & Mouse for Xbox xCloud (macOS)";
+			productReference = D5456A4D275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D5456A59275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5456A7B275C5F3900034D5B /* Build configuration list for PBXNativeTarget "Keyboard & Mouse for Xbox xCloud Extension (iOS)" */;
+			buildPhases = (
+				D5456A56275C5F3900034D5B /* Sources */,
+				D5456A57275C5F3900034D5B /* Frameworks */,
+				D5456A58275C5F3900034D5B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Keyboard & Mouse for Xbox xCloud Extension (iOS)";
+			productName = "Keyboard & Mouse for Xbox xCloud Extension (iOS)";
+			productReference = D5456A5A275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		D5456A63275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5456A82275C5F3900034D5B /* Build configuration list for PBXNativeTarget "Keyboard & Mouse for Xbox xCloud Extension (macOS)" */;
+			buildPhases = (
+				D5456A60275C5F3900034D5B /* Sources */,
+				D5456A61275C5F3900034D5B /* Frameworks */,
+				D5456A62275C5F3900034D5B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Keyboard & Mouse for Xbox xCloud Extension (macOS)";
+			productName = "Keyboard & Mouse for Xbox xCloud Extension (macOS)";
+			productReference = D5456A64275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D5456A28275C5F3800034D5B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					D5456A3A275C5F3900034D5B = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					D5456A4C275C5F3900034D5B = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					D5456A59275C5F3900034D5B = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					D5456A63275C5F3900034D5B = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = D5456A2B275C5F3800034D5B /* Build configuration list for PBXProject "Keyboard & Mouse for Xbox xCloud" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D5456A27275C5F3800034D5B;
+			productRefGroup = D5456A3C275C5F3900034D5B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D5456A3A275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud (iOS) */,
+				D5456A4C275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud (macOS) */,
+				D5456A59275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension (iOS) */,
+				D5456A63275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D5456A39275C5F3900034D5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5456A6D275C5F3900034D5B /* Icon.png in Resources */,
+				D5456A44275C5F3900034D5B /* LaunchScreen.storyboard in Resources */,
+				D5456A6B275C5F3900034D5B /* Main.html in Resources */,
+				D5456A71275C5F3900034D5B /* Script.js in Resources */,
+				D5456A75275C5F3900034D5B /* Assets.xcassets in Resources */,
+				D5456A47275C5F3900034D5B /* Main.storyboard in Resources */,
+				D5456A6F275C5F3900034D5B /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5456A4B275C5F3900034D5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5456A6E275C5F3900034D5B /* Icon.png in Resources */,
+				D5456A70275C5F3900034D5B /* Style.css in Resources */,
+				D5456A53275C5F3900034D5B /* Main.storyboard in Resources */,
+				D5456A72275C5F3900034D5B /* Script.js in Resources */,
+				D5456A76275C5F3900034D5B /* Assets.xcassets in Resources */,
+				D5456A6C275C5F3900034D5B /* Main.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5456A58275C5F3900034D5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5456AA9275C5F3900034D5B /* icon-48.png in Resources */,
+				D5456AA8275C5F3900034D5B /* popup.html in Resources */,
+				D5456AAD275C5F3900034D5B /* icon-24.png in Resources */,
+				D5456AAC275C5F3900034D5B /* icon-32.png in Resources */,
+				D5456AA6275C5F3900034D5B /* images in Resources */,
+				D5456AA7275C5F3900034D5B /* js in Resources */,
+				D5456AAB275C5F3900034D5B /* icon-128.png in Resources */,
+				D5456AAA275C5F3900034D5B /* manifest.json in Resources */,
+				D5456AA5275C5F3900034D5B /* css in Resources */,
+				D5456AA4275C5F3900034D5B /* about.html in Resources */,
+				D5456AA3275C5F3900034D5B /* icon-256.png in Resources */,
+				D5456AA2275C5F3900034D5B /* icon-16.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5456A62275C5F3900034D5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5456A9D275C5F3900034D5B /* icon-48.png in Resources */,
+				D5456A9C275C5F3900034D5B /* popup.html in Resources */,
+				D5456AA1275C5F3900034D5B /* icon-24.png in Resources */,
+				D5456AA0275C5F3900034D5B /* icon-32.png in Resources */,
+				D5456A9A275C5F3900034D5B /* images in Resources */,
+				D5456A9B275C5F3900034D5B /* js in Resources */,
+				D5456A9F275C5F3900034D5B /* icon-128.png in Resources */,
+				D5456A9E275C5F3900034D5B /* manifest.json in Resources */,
+				D5456A99275C5F3900034D5B /* css in Resources */,
+				D5456A98275C5F3900034D5B /* about.html in Resources */,
+				D5456A97275C5F3900034D5B /* icon-256.png in Resources */,
+				D5456A96275C5F3900034D5B /* icon-16.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D5456A37275C5F3900034D5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5456A73275C5F3900034D5B /* ViewController.swift in Sources */,
+				D5456A3F275C5F3900034D5B /* AppDelegate.swift in Sources */,
+				D5456A41275C5F3900034D5B /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5456A49275C5F3900034D5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5456A74275C5F3900034D5B /* ViewController.swift in Sources */,
+				D5456A50275C5F3900034D5B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5456A56275C5F3900034D5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5456A77275C5F3900034D5B /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5456A60275C5F3900034D5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5456A78275C5F3900034D5B /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D5456A5D275C5F3900034D5B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D5456A59275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension (iOS) */;
+			targetProxy = D5456A5C275C5F3900034D5B /* PBXContainerItemProxy */;
+		};
+		D5456A67275C5F3900034D5B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D5456A63275C5F3900034D5B /* Keyboard & Mouse for Xbox xCloud Extension (macOS) */;
+			targetProxy = D5456A66275C5F3900034D5B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D5456A2E275C5F3900034D5B /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5456A2F275C5F3900034D5B /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		D5456A42275C5F3900034D5B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5456A43275C5F3900034D5B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D5456A45275C5F3900034D5B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5456A46275C5F3900034D5B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D5456A51275C5F3900034D5B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5456A52275C5F3900034D5B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D5456A79275C5F3900034D5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D5456A7A275C5F3900034D5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		D5456A7C275C5F3900034D5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Keyboard & Mouse for Xbox xCloud Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourCompany.Keyboard---Mouse-for-Xbox-xCloud.Extension";
+				PRODUCT_NAME = "Keyboard & Mouse for Xbox xCloud Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D5456A7D275C5F3900034D5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Keyboard & Mouse for Xbox xCloud Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourCompany.Keyboard---Mouse-for-Xbox-xCloud.Extension";
+				PRODUCT_NAME = "Keyboard & Mouse for Xbox xCloud Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D5456A80275C5F3900034D5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Keyboard & Mouse for Xbox xCloud";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourCompany.Keyboard---Mouse-for-Xbox-xCloud";
+				PRODUCT_NAME = "Keyboard & Mouse for Xbox xCloud";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D5456A81275C5F3900034D5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Keyboard & Mouse for Xbox xCloud";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourCompany.Keyboard---Mouse-for-Xbox-xCloud";
+				PRODUCT_NAME = "Keyboard & Mouse for Xbox xCloud";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D5456A83275C5F3900034D5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Keyboard & Mouse for Xbox xCloud.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Keyboard & Mouse for Xbox xCloud Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourCompany.Keyboard---Mouse-for-Xbox-xCloud.Extension";
+				PRODUCT_NAME = "Keyboard & Mouse for Xbox xCloud Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D5456A84275C5F3900034D5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Keyboard & Mouse for Xbox xCloud.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Keyboard & Mouse for Xbox xCloud Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourCompany.Keyboard---Mouse-for-Xbox-xCloud.Extension";
+				PRODUCT_NAME = "Keyboard & Mouse for Xbox xCloud Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		D5456A87275C5F3900034D5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Keyboard & Mouse for Xbox xCloud.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Keyboard & Mouse for Xbox xCloud";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourCompany.Keyboard---Mouse-for-Xbox-xCloud";
+				PRODUCT_NAME = "Keyboard & Mouse for Xbox xCloud";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D5456A88275C5F3900034D5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Keyboard & Mouse for Xbox xCloud.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Keyboard & Mouse for Xbox xCloud";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourCompany.Keyboard---Mouse-for-Xbox-xCloud";
+				PRODUCT_NAME = "Keyboard & Mouse for Xbox xCloud";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D5456A2B275C5F3800034D5B /* Build configuration list for PBXProject "Keyboard & Mouse for Xbox xCloud" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5456A79275C5F3900034D5B /* Debug */,
+				D5456A7A275C5F3900034D5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5456A7B275C5F3900034D5B /* Build configuration list for PBXNativeTarget "Keyboard & Mouse for Xbox xCloud Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5456A7C275C5F3900034D5B /* Debug */,
+				D5456A7D275C5F3900034D5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5456A7F275C5F3900034D5B /* Build configuration list for PBXNativeTarget "Keyboard & Mouse for Xbox xCloud (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5456A80275C5F3900034D5B /* Debug */,
+				D5456A81275C5F3900034D5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5456A82275C5F3900034D5B /* Build configuration list for PBXNativeTarget "Keyboard & Mouse for Xbox xCloud Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5456A83275C5F3900034D5B /* Debug */,
+				D5456A84275C5F3900034D5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5456A86275C5F3900034D5B /* Build configuration list for PBXNativeTarget "Keyboard & Mouse for Xbox xCloud (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5456A87275C5F3900034D5B /* Debug */,
+				D5456A88275C5F3900034D5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D5456A28275C5F3800034D5B /* Project object */;
+}
