@@ -58,6 +58,44 @@
   transform: translate(-50%, -50%);
 }
 
+#click-to-enable-mouse-xmc .minimize-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #aaa;
+  background-color: rgba(30, 30, 30, 0.5);
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#click-to-enable-mouse-xmc.minimized {
+  top: 10px;
+  right: 10px;
+  left: auto;
+  transform: none;
+  width: 100px;
+  min-height: 34px;
+  font-size: 0.8em;
+  border-radius: 6px;
+  padding: 8px;
+  padding-right: 44px;
+}
+
+#click-to-enable-mouse-xmc.minimized span {
+  display: none;
+}
+
+#click-to-enable-mouse-xmc.minimized::before {
+  content: "Enable mouse";
+}
+
 /* Animations to fade the snackbar in and out */
 @-webkit-keyframes fadein-xmc {
   from {
