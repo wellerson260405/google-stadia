@@ -122,7 +122,9 @@ function listenKeyboard(codeMapping: Record<string, CodeMap>) {
   };
 
   listeners.keydown = function keyDown(e) {
-    const handled = handleKeyEvent((e as KeyboardEvent).code, simulateBtnPress, simulateAxeDirPress);
+    const event = e as KeyboardEvent;
+    if (event.repeat) return;
+    const handled = handleKeyEvent(event.code, simulateBtnPress, simulateAxeDirPress);
     if (handled && e.cancelable) e.preventDefault();
   };
   listeners.keyup = function keyUp(e) {

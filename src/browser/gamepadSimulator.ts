@@ -100,6 +100,25 @@ export const fakeController = {
   hapticActuators: [],
 };
 
+const axeStates: Partial<Record<Direction, boolean>> = {};
+
+const getAxePosForDirection = (direction: Direction) =>
+  [Direction.UP, Direction.DOWN].indexOf(direction) > -1 ? 1 : 0;
+const getOppositeDirection = (direction: Direction) => {
+  switch (direction) {
+    case Direction.UP:
+      return Direction.DOWN;
+    case Direction.DOWN:
+      return Direction.UP;
+    case Direction.LEFT:
+      return Direction.RIGHT;
+    case Direction.RIGHT:
+      return Direction.LEFT;
+  }
+};
+const getValueForDirection = (direction: Direction) =>
+  [Direction.UP, Direction.LEFT].indexOf(direction) > -1 ? -1 : 1;
+
 export function simulateBtnTouch(buttonIndex: number) {
   fakeController.buttons[buttonIndex].touched = true;
   fakeController.timestamp = performance.now();
@@ -119,15 +138,20 @@ export function simulateBtnUnpress(buttonIndex: number) {
 }
 
 export function simulateAxeDirPress(axe: number, direction: Direction) {
-  const value = [Direction.UP, Direction.LEFT].indexOf(direction) > -1 ? -1 : 1;
-  const pos = [Direction.UP, Direction.DOWN].indexOf(direction) > -1 ? 1 : 0;
-  fakeController.axes[axe * 2 + pos] = value;
+  axeStates[direction] = true;
+  const pos = getAxePosForDirection(direction);
+  const value = getValueForDirection(direction);
+  const oppositeDirection = getOppositeDirection(direction);
+  fakeController.axes[axe * 2 + pos] =
+    value + (axeStates[oppositeDirection] ? getValueForDirection(oppositeDirection) : 0);
   fakeController.timestamp = performance.now();
 }
 
 export function simulateAxeDirUnpress(axe: number, direction: Direction) {
-  const pos = [Direction.UP, Direction.DOWN].indexOf(direction) > -1 ? 1 : 0;
-  fakeController.axes[axe * 2 + pos] = 0;
+  axeStates[direction] = false;
+  const pos = getAxePosForDirection(direction);
+  const oppositeDirection = getOppositeDirection(direction);
+  fakeController.axes[axe * 2 + pos] = axeStates[oppositeDirection] ? getValueForDirection(oppositeDirection) : 0;
   fakeController.timestamp = performance.now();
 }
 
