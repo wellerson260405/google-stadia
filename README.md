@@ -80,10 +80,13 @@ This extension works by acting as a **"virtual" controller**. It listens for key
 
 There is no added input delay introduced by this extension - all keyboard/mouse input is instantly translated into virtual controller input immediately by the extension without any extra software or steps.
 
-
 ## Show your support
 
 Like this extension? Why not [buy me a coffee](https://www.buymeacoffee.com/idolize)? I really appreciate it!
+
+## Need help?
+
+Feel free to [file an issue](https://github.com/idolize/xcloud-keyboard-mouse/issues), [post on Reddit](https://www.reddit.com/r/xcloudkeyboardmouse/), or [join the Discord discussion](https://discord.gg/TrZgjXxu).
 
 ## Development and contributing
 
