@@ -36,7 +36,7 @@ Microsoft's cloud gaming service [Xbox Cloud Gaming (aka Project xCloud)](https:
 
 Since very few games on Xbox consoles support mouse and keyboard as first-class input devices, Microsoft chose to limit xCloud users to only using gamepad controllers to play (although [maybe they will add PC servers eventually](https://twitter.com/XboxP3/status/1384154390630592521), but I wouldn't hold my breath).
 
-So, if you don't have a controller or just prefer to use a mouse and keyboard you are out of luck!
+So, if you don't have a controller or just prefer to use a mouse and keyboard you are out of luck...
 
 But that all changes with this extension!
 
