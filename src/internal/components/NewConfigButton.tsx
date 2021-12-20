@@ -3,6 +3,7 @@ import { PrimaryButton, IconButton, TextField, Callout, DirectionalHint, Default
 import { GamepadConfig } from '../../shared/types';
 import { PlusCircleIcon } from './icons';
 import { importConfig } from '../utils/importExport';
+import useIsMounted from './hooks/useIsMounted';
 
 interface NewConfigButtonProps {
   allConfigs: Record<string, GamepadConfig>;
@@ -15,6 +16,7 @@ export default function NewConfigButton({ disabled, allConfigs, onCreate, onImpo
   const buttonId = 'new-config-btn';
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState('');
+  const isMounted = useIsMounted();
   const isTaken = useMemo(() => {
     return (
       Object.keys(allConfigs)
@@ -33,14 +35,14 @@ export default function NewConfigButton({ disabled, allConfigs, onCreate, onImpo
     importConfig()
       .then((config) => {
         onImport(name, config);
-        setName('');
+        if (isMounted()) setName('');
         alert('Preset imported from file successfully');
       })
       .catch((errorMsg) => {
         console.error('Import failed', errorMsg);
         alert(errorMsg);
       });
-  }, [name, onImport]);
+  }, [isMounted, name, onImport]);
   const handleSubmit = useCallback(() => {
     onCreate(name);
   }, [onCreate, name]);
