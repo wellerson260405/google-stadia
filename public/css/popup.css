@@ -185,6 +185,8 @@ html, body {
 
 .config-selector {
   min-height: 40px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ccc;
 }
 
 .config-editor {
