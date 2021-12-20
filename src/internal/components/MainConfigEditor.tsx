@@ -37,6 +37,7 @@ export default function MainConfigEditor({
   const handleSubmitGamepadConfig = useCallback(
     (name: string, gamepadConfig: GamepadConfig) => {
       dispatch(modifyGamepadConfigAction({ name, gamepadConfig }));
+      setCurrentConfig(name);
     },
     [dispatch],
   );
@@ -75,6 +76,7 @@ export default function MainConfigEditor({
             allConfigs={configs}
             setCurrentConfig={setCurrentConfig}
             addNewConfig={handleAddNewConfig}
+            importConfig={handleSubmitGamepadConfig}
           />
           <GamepadConfigEditor
             name={currentConfig}

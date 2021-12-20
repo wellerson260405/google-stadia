@@ -9,6 +9,7 @@ import SensitivitySelector from './SensitivitySelector';
 import StickSelector from './StickSelector';
 import KeybindingsForButton from './KeybindingsForButton';
 import useKeyConfigEditorState from './hooks/useKeyConfigEditorState';
+import { exportConfig } from '../utils/importExport';
 
 interface SensitivityEditorProps {
   name: string;
@@ -86,6 +87,10 @@ function GamepadConfigEditor({ name, onSubmitChanges, onCancelCreate, onActivate
     }
   }, [name, onDelete]);
 
+  const handleExport = useCallback(() => {
+    exportConfig(state.config, name);
+  }, [state.config, name]);
+
   const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback(
     (e) => {
       e.preventDefault();
@@ -141,6 +146,11 @@ function GamepadConfigEditor({ name, onSubmitChanges, onCancelCreate, onActivate
           {!isEditing ? (
             <DefaultButton className="margin-left-s" disabled={isDefaultConfig} onClick={handleDelete}>
               Delete
+            </DefaultButton>
+          ) : null}
+          {!isEditing ? (
+            <DefaultButton className="margin-left-s" onClick={handleExport}>
+              Export
             </DefaultButton>
           ) : null}
         </div>

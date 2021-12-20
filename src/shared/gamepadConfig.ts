@@ -111,6 +111,19 @@ export function validateMouseConfig(mouseConfig: GamepadMouseConfig): {
   return { errors, hasErrors: Object.keys(errors).length > 0 };
 }
 
+export function isGamepadConfigValid(gamepadConfig: GamepadConfig) {
+  try {
+    const { hasErrors: mouseErrors } = validateMouseConfig(gamepadConfig.mouseConfig);
+    if (mouseErrors) {
+      return false;
+    }
+    const { hasErrors: buttonErrors } = processGamepadConfig(gamepadConfig.keyConfig);
+    return !buttonErrors;
+  } catch (e) {
+    return false;
+  }
+}
+
 export const defaultGamepadConfig: GamepadConfig = {
   mouseConfig: {
     mouseControls: 1,

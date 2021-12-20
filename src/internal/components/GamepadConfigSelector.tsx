@@ -13,6 +13,7 @@ interface GamepadConfigSelectorProps {
   allConfigs: Record<string, GamepadConfig>;
   setCurrentConfig: (name: string) => void;
   addNewConfig: (newName: string) => void;
+  importConfig: (name: string, config: GamepadConfig) => void;
 }
 
 function ConfigTitle({ name, status }: { name: string; status?: 'New' | 'Active' | false }) {
@@ -31,6 +32,7 @@ function GamepadConfigSelector({
   allConfigs,
   setCurrentConfig,
   addNewConfig,
+  importConfig,
 }: GamepadConfigSelectorProps) {
   const configsArray = useMemo(() => Object.keys(allConfigs), [allConfigs]);
   const currentConfigIndex = useMemo(() => configsArray.indexOf(currentConfig), [configsArray, currentConfig]);
@@ -64,6 +66,7 @@ function GamepadConfigSelector({
           disabled={configsArray.length >= MAX_NUM_CONFIGS - 1}
           allConfigs={allConfigs}
           onCreate={addNewConfig}
+          onImport={importConfig}
         />
       </div>
     </div>

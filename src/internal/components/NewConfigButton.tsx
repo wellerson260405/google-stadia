@@ -1,15 +1,17 @@
 import React, { useState, useRef, useMemo, KeyboardEventHandler, useCallback } from 'react';
-import { PrimaryButton, IconButton, TextField, Callout, DirectionalHint } from '@fluentui/react';
+import { PrimaryButton, IconButton, TextField, Callout, DirectionalHint, DefaultButton } from '@fluentui/react';
 import { GamepadConfig } from '../../shared/types';
 import { PlusCircleIcon } from './icons';
+import { importConfig } from '../utils/importExport';
 
 interface NewConfigButtonProps {
   allConfigs: Record<string, GamepadConfig>;
   disabled?: boolean;
   onCreate: (name: string) => void;
+  onImport: (name: string, config: GamepadConfig) => void;
 }
 
-export default function NewConfigButton({ disabled, onCreate, allConfigs }: NewConfigButtonProps) {
+export default function NewConfigButton({ disabled, allConfigs, onCreate, onImport }: NewConfigButtonProps) {
   const buttonId = 'new-config-btn';
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState('');
@@ -27,6 +29,18 @@ export default function NewConfigButton({ disabled, onCreate, allConfigs }: NewC
   const handleClose = useCallback(() => {
     setIsOpen(false);
   }, []);
+  const handleImport = useCallback(() => {
+    importConfig()
+      .then((config) => {
+        onImport(name, config);
+        setName('');
+        alert('Preset imported from file successfully');
+      })
+      .catch((errorMsg) => {
+        console.error('Import failed', errorMsg);
+        alert(errorMsg);
+      });
+  }, [name, onImport]);
   const handleSubmit = useCallback(() => {
     onCreate(name);
   }, [onCreate, name]);
@@ -60,9 +74,9 @@ export default function NewConfigButton({ disabled, onCreate, allConfigs }: NewC
           // Needed to fix issue in Safari
           preventDismissOnEvent={(e) => e.type === 'resize'}
         >
-          <div style={{ width: 200 }} className="padding-full">
+          <div style={{ width: 250 }} className="padding-full">
             <TextField
-              placeholder="Preset name"
+              placeholder="New preset name"
               autoFocus={isOpen}
               value={name}
               maxLength={18}
@@ -70,9 +84,12 @@ export default function NewConfigButton({ disabled, onCreate, allConfigs }: NewC
               onChange={(e) => setName(e.currentTarget.value)}
             />
             {isTaken ? <div className="error margin-top-s">Config with that name already exists!</div> : null}
-            <div className="horizontal-reverse margin-top-s">
+            <div className="horizontal space-between margin-top-s">
+              <DefaultButton disabled={!name || isTaken} onClick={handleImport}>
+                Import File
+              </DefaultButton>
               <PrimaryButton disabled={!name || isTaken} onClick={handleSubmit}>
-                Create
+                Create New
               </PrimaryButton>
             </div>
           </div>
