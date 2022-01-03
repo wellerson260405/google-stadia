@@ -86,7 +86,7 @@ Like this extension? Why not [buy me a coffee](https://www.buymeacoffee.com/idol
 
 ## Need help?
 
-Feel free to [file an issue](https://github.com/idolize/xcloud-keyboard-mouse/issues), [post on Reddit](https://www.reddit.com/r/xcloudkeyboardmouse/), or [join the Discord discussion](https://discord.gg/TrZgjXxu).
+Feel free to [file an issue](https://github.com/idolize/xcloud-keyboard-mouse/issues), [post on Reddit](https://www.reddit.com/r/xcloudkeyboardmouse/), or [join the Discord discussion](https://discord.gg/5Jp9drge9m).
 
 ## Development and contributing
 
