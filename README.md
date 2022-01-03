@@ -34,7 +34,7 @@ A browser extension to control any game on [Xbox Cloud Gaming (Project xCloud)](
 
 Microsoft's cloud gaming service [Xbox Cloud Gaming (aka Project xCloud)](https://xbox.com/play) lets you play your favorite Xbox games in the cloud, but it runs on physical Xbox **consoles** (not PCs) behind the scenes.
 
-Since very few games on Xbox consoles support mouse and keyboard as first-class input devices, Microsoft chose to limit xCloud users to only using gamepad controllers to play (although [maybe they will add PC servers eventually](https://twitter.com/XboxP3/status/1384154390630592521), but I wouldn't hold my breath).
+Since very few games on Xbox consoles support mouse and keyboard as first-class input devices, Microsoft chose to limit xCloud users to only using gamepad controllers to play (although [maybe they will add PC servers eventually](https://twitter.com/XboxP3/status/1384154390630592521)).
 
 So, if you don't have a controller or just prefer to use a mouse and keyboard you are out of luck...
 
