@@ -31,11 +31,13 @@ npm run build:edge
 
 **Safari:**
 
+[See here](safari/README.md) for more complete Safari instructions.
+
+In addition to rebuilding the JavaScript extension with this command, you will also need to [re-build the Xcode Swift project as well for Safari](https://developer.apple.com/documentation/safariservices/safari_web_extensions/running_your_safari_web_extension#3744471) each time you make a change.
+
 ```
 npm run build:safari
 ```
-
-Note for Safari: in addition to rebuilding the JavaScript extension with this command, you will also need to [re-build the Xcode Swift project as well for Safari](https://developer.apple.com/documentation/safariservices/safari_web_extensions/running_your_safari_web_extension#3744471) each time you make a change.
 
 
 ## Build in watch mode
