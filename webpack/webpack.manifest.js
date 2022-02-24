@@ -39,7 +39,7 @@ class BuildManifestPlugin {
     } else if (this.opts.browser.toLowerCase() === 'safari') {
       convertV3ToV2(manifestBase);
     }
-    const output = this.opts.prettyPrint ? JSON.stringify(manifestBase, null, 2) : JSON.stringify(manifestBase);
+    const output = this.opts.pretty ? JSON.stringify(manifestBase, null, 2) : JSON.stringify(manifestBase);
     fs.mkdirSync(distFolderPath, { recursive: true });
     fs.writeFileSync(distManifestFilePath, output);
   }
