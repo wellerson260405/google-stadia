@@ -1,38 +1,28 @@
-import React, { useCallback, useRef, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { Toggle, IToggleProps, ThemeProvider } from '@fluentui/react';
 import { useAppDispatch } from './hooks/reduxHooks';
 import { activateGamepadConfigAction, disableGamepadConfigAction } from '../state/actions';
-import { DEFAULT_CONFIG_NAME } from '../../shared/gamepadConfig';
 import { fluentXboxHeaderTheme } from './theme';
 import Logo from './Logo';
 import HeaderMoreOptions from './HeaderMoreOptions';
 
 interface HeaderProps {
   gameName: string | null;
-  activeConfig: string | null;
+  isEnabled: boolean;
+  activeConfig: string;
 }
 
-export default function Header({ gameName, activeConfig }: HeaderProps) {
+export default function Header({ gameName, activeConfig, isEnabled }: HeaderProps) {
   const dispatch = useAppDispatch();
-  // TODO store the last-active config name in local storage instead of just storing it
-  // in the JS memory as that is frequently purged
-  const prevActiveRef = useRef<string>(activeConfig || DEFAULT_CONFIG_NAME);
-  useEffect(() => {
-    if (activeConfig) {
-      // Only update if active
-      prevActiveRef.current = activeConfig;
-    }
-  }, [activeConfig]);
-  const isEnabled = !!activeConfig;
   const handleToggle: IToggleProps['onChange'] = useCallback(
     (event, checked) => {
       if (!checked) {
         dispatch(disableGamepadConfigAction());
       } else {
-        dispatch(activateGamepadConfigAction({ name: prevActiveRef.current }));
+        dispatch(activateGamepadConfigAction({ name: activeConfig }));
       }
     },
-    [dispatch, prevActiveRef],
+    [dispatch, activeConfig],
   );
 
   return (

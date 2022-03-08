@@ -1,21 +1,19 @@
 import React from 'react';
-import { DEFAULT_CONFIG_NAME } from '../shared/gamepadConfig';
 import Header from './components/Header';
 import MainConfigEditor from './components/MainConfigEditor';
 import useGameName from './components/hooks/useGameStatus';
 import useGamepadConfigs from './components/hooks/useGamepadConfigs';
 
 export default function Popup() {
-  const { activeConfig, status, configs, error } = useGamepadConfigs();
-  const initialConfig = activeConfig || DEFAULT_CONFIG_NAME;
+  const { activeConfig, status, isEnabled, configs, error } = useGamepadConfigs();
   const { gameName } = useGameName();
 
   return (
     <div className="popup vertical">
-      <Header activeConfig={activeConfig} gameName={gameName} />
+      <Header activeConfig={activeConfig} isEnabled={isEnabled} gameName={gameName} />
       <MainConfigEditor
-        initialConfig={initialConfig}
         activeConfig={activeConfig}
+        isEnabled={isEnabled}
         status={status}
         configs={configs}
         error={error}

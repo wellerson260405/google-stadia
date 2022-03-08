@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { fetchAllAction } from '../../state/actions';
-import { getActiveConfigName, getAllGamepadConfigs } from '../../state/selectors';
+import { getActiveConfigName, getAllGamepadConfigs, getIsEnabled } from '../../state/selectors';
 import { useAppDispatch, useAppSelector } from './reduxHooks';
 
 export default function useGamepadConfigs() {
   const { configs, status, error } = useAppSelector(getAllGamepadConfigs);
   const activeConfig = useAppSelector(getActiveConfigName);
+  const isEnabled = useAppSelector(getIsEnabled);
 
   // fetch data if not present
   const dispatch = useAppDispatch();
@@ -15,5 +16,5 @@ export default function useGamepadConfigs() {
     }
   }, [dispatch, status]);
 
-  return { activeConfig, configs, status, error };
+  return { activeConfig, configs, isEnabled, status, error };
 }

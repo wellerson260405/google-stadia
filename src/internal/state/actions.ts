@@ -10,14 +10,15 @@ import {
   getLocalGameStatus,
   storeActiveGamepadConfig,
   storeGamepadConfig,
+  storeGamepadConfigEnabled,
 } from './chromeStoredData';
+import { getActiveTab } from '../utils/tabsUtils';
 
-let port: chrome.runtime.Port | undefined;
-const sendMessage = (msg: Message) => {
-  if (!port) {
-    port = chrome.runtime.connect({ name: 'internal' });
+const sendMessage = async (msg: Message) => {
+  const tab = await getActiveTab();
+  if (tab) {
+    chrome.tabs.sendMessage(tab.id!, msg);
   }
-  port.postMessage(msg);
 };
 
 export const fetchGameStatusAction = createAsyncThunk('meta/gameStatus', getLocalGameStatus);
@@ -27,7 +28,7 @@ export const fetchAllAction = createAsyncThunk('config/fetchAll', getAllStoredSy
 async function _setActiveConfig(name: string, state: RootState) {
   const { config: gamepadConfig } = getGamepadConfig(state, name);
   if (!gamepadConfig) throw new Error('Missing gamepad config cache');
-  sendMessage(activateGamepadConfigMsg(name, gamepadConfig));
+  await sendMessage(activateGamepadConfigMsg(name, gamepadConfig));
   await storeActiveGamepadConfig(name);
   return { name, gamepadConfig };
 }
@@ -38,8 +39,8 @@ export const activateGamepadConfigAction = createAsyncThunk(
 );
 
 export const disableGamepadConfigAction = createAsyncThunk('config/disable', async () => {
-  sendMessage(disableGamepadMsg());
-  await storeActiveGamepadConfig(null);
+  await sendMessage(disableGamepadMsg());
+  await storeGamepadConfigEnabled(false);
 });
 
 export const deleteGamepadConfigAction = createAsyncThunk(
@@ -60,7 +61,7 @@ export const modifyGamepadConfigAction = createAsyncThunk(
   async ({ name, gamepadConfig }: { name: string; gamepadConfig: GamepadConfig }, { getState }) => {
     if (isConfigActive(getState(), name)) {
       // Update the active config on page
-      sendMessage(activateGamepadConfigMsg(name, gamepadConfig));
+      await sendMessage(activateGamepadConfigMsg(name, gamepadConfig));
     }
     await storeGamepadConfig(name, gamepadConfig);
     return { name, gamepadConfig };

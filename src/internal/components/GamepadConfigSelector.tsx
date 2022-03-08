@@ -9,6 +9,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from './icons';
 interface GamepadConfigSelectorProps {
   className?: string;
   currentConfig: string;
+  isEnabled: boolean;
   activeConfig: string | null;
   allConfigs: Record<string, GamepadConfig>;
   setCurrentConfig: (name: string) => void;
@@ -29,6 +30,7 @@ function GamepadConfigSelector({
   className,
   currentConfig,
   activeConfig,
+  isEnabled,
   allConfigs,
   setCurrentConfig,
   addNewConfig,
@@ -37,7 +39,7 @@ function GamepadConfigSelector({
   const configsArray = useMemo(() => Object.keys(allConfigs), [allConfigs]);
   const currentConfigIndex = useMemo(() => configsArray.indexOf(currentConfig), [configsArray, currentConfig]);
   const isNew = !allConfigs[currentConfig];
-  const isActive = activeConfig === currentConfig;
+  const isActiveAndEnabled = isEnabled && activeConfig === currentConfig;
   const onlyOneConfig = configsArray.length < 2;
   const handleMove = (isBack: boolean) => {
     const n = configsArray.length;
@@ -56,7 +58,7 @@ function GamepadConfigSelector({
         <ChevronLeftIcon />
       </DefaultButton>
 
-      <ConfigTitle name={currentConfig} status={isActive && 'Active'} />
+      <ConfigTitle name={currentConfig} status={isActiveAndEnabled && 'Active'} />
 
       <div className="horizontal">
         <DefaultButton className={arrowCssClasses} disabled={configsArray.length < 2} onClick={() => handleMove(false)}>

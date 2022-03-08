@@ -7,5 +7,8 @@ module.exports = (env) => {
 
   return merge(common(env), {
     mode,
+    optimization: {
+      minimize: false,
+    },
   });
 };

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Spinner, SpinnerSize } from '@fluentui/react';
 import { SerializedError } from '@reduxjs/toolkit';
 import { GamepadConfig } from '../../shared/types';
@@ -11,22 +11,19 @@ import { PendingReadStatus } from '../state/reducers';
 import ErrorDetails from './ErrorDetails';
 
 interface MainConfigEditorProps {
-  activeConfig: string | null;
+  activeConfig: string;
+  isEnabled: boolean;
   status: PendingReadStatus;
   error?: SerializedError;
   configs: Record<string, GamepadConfig>;
-  initialConfig: string;
 }
 
-export default function MainConfigEditor({
-  activeConfig,
-  initialConfig,
-  configs,
-  status,
-  error,
-}: MainConfigEditorProps) {
+export default function MainConfigEditor({ activeConfig, isEnabled, configs, status, error }: MainConfigEditorProps) {
   const dispatch = useAppDispatch();
-  const [currentConfig, setCurrentConfig] = useState(initialConfig);
+  const [currentConfig, setCurrentConfig] = useState(activeConfig);
+  useEffect(() => {
+    setCurrentConfig(activeConfig);
+  }, [activeConfig]);
 
   const handleActivateGamepadConfig = useCallback(
     (name: string) => {
@@ -51,8 +48,8 @@ export default function MainConfigEditor({
     [dispatch, currentConfig, setCurrentConfig],
   );
   const handleCancelCreate = useCallback(() => {
-    setCurrentConfig(initialConfig);
-  }, [initialConfig, setCurrentConfig]);
+    setCurrentConfig(activeConfig);
+  }, [activeConfig, setCurrentConfig]);
   const handleAddNewConfig = useCallback(
     (name: string) => {
       // Should this "draft" name be stored in a different state to be safe?
@@ -71,6 +68,7 @@ export default function MainConfigEditor({
         <div className="vertical full-height">
           <GamepadConfigSelector
             className="padding-bottom-s"
+            isEnabled={isEnabled}
             activeConfig={activeConfig}
             currentConfig={currentConfig}
             allConfigs={configs}

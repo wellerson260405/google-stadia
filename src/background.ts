@@ -1,6 +1,5 @@
 import { getAllStoredSync, storeActiveGamepadConfig, updateGameName } from './internal/state/chromeStoredData';
 import { disableActionButton, enableActionButton } from './internal/utils/actionButtonUtils';
-import { getActiveTab } from './internal/utils/tabsUtils';
 import { DEFAULT_CONFIG_NAME } from './shared/gamepadConfig';
 import { MessageTypes, activateGamepadConfigMsg, Message } from './shared/messages';
 
@@ -25,29 +24,28 @@ chrome.runtime.onInstalled.addListener(({ reason }) => {
 chrome.runtime.onMessage.addListener((msg: Message, sender, sendResponse) => {
   // Receives messages from the content_script
   if (!sender.tab) return false;
+
   console.log('Connected');
   if (msg.type === MessageTypes.INJECTED) {
     console.log('Injected');
     enableActionButton(sender.tab.id);
-  } else if (msg.type === MessageTypes.INITIALIZED) {
-    console.log('Initialized');
+    return false;
+  }
+  if (msg.type === MessageTypes.INITIALIZED) {
+    console.log('Initialized', msg.gameName);
     updateGameName(msg.gameName);
     // Send any currently-active config
-    getAllStoredSync().then(({ activeConfig, configs }) => {
-      const config = !activeConfig ? null : configs[activeConfig];
+    getAllStoredSync().then(({ isEnabled, activeConfig, configs }) => {
+      const config = !isEnabled ? null : configs[activeConfig];
       sendResponse(activateGamepadConfigMsg(activeConfig, config));
     });
+    // https://stackoverflow.com/a/56483156
     return true;
   }
+  if (msg.type === MessageTypes.GAME_CHANGED) {
+    console.log('Game changed to', msg.gameName);
+    updateGameName(msg.gameName);
+    return false;
+  }
   return false;
-});
-
-// Listen for any internal messages (e.g. from popup) and proxy to the content_script.
-chrome.runtime.onConnect.addListener((port) => {
-  port.onMessage.addListener(async (msg: Message) => {
-    const tab = await getActiveTab();
-    if (tab) {
-      chrome.tabs.sendMessage(tab.id!, msg);
-    }
-  });
 });

@@ -13,6 +13,7 @@ enum LocalStorageKeys {
 enum SyncStorageKeys {
   GAMEPAD_CONFIGS = 'GP_CONF',
   ACTIVE_GAMEPAD_CONFIG = 'ACTIVE_GP_CONF',
+  ENABLED = 'ENABLED',
 }
 
 export function updateGameName(gameName: string | null) {
@@ -43,20 +44,35 @@ export function deleteGamepadConfig(name: string) {
 }
 
 /**
+ * Sets the extension enabled/disabled.
+ */
+export function storeGamepadConfigEnabled(enabled: boolean) {
+  return chrome.storage.sync.set({ [SyncStorageKeys.ENABLED]: enabled });
+}
+
+/**
  * Sets a gamepad config as active.
  */
-export function storeActiveGamepadConfig(name: string | null) {
+export function storeActiveGamepadConfig(name: string) {
   // TODO validate the name exists before setting it active?
-  return chrome.storage.sync.set({ [SyncStorageKeys.ACTIVE_GAMEPAD_CONFIG]: name });
+  return chrome.storage.sync.set({
+    [SyncStorageKeys.ENABLED]: true,
+    [SyncStorageKeys.ACTIVE_GAMEPAD_CONFIG]: name,
+  });
 }
 
 function normalizeGamepadConfigs(data: Record<string, any> = {}): AllMyGamepadConfigs {
-  const activeConfig = data[SyncStorageKeys.ACTIVE_GAMEPAD_CONFIG] || null;
+  const activeConfig: string = data[SyncStorageKeys.ACTIVE_GAMEPAD_CONFIG] || DEFAULT_CONFIG_NAME;
+  const isEnabled: boolean =
+    data[SyncStorageKeys.ENABLED] === undefined
+      ? !!data[SyncStorageKeys.ACTIVE_GAMEPAD_CONFIG]
+      : data[SyncStorageKeys.ENABLED];
   const keys = Object.keys(data).filter((key) => key.startsWith(SyncStorageKeys.GAMEPAD_CONFIGS));
   const initialConfigsMap: AllMyGamepadConfigs['configs'] = {
     [DEFAULT_CONFIG_NAME]: defaultGamepadConfig,
   };
   return {
+    isEnabled,
     activeConfig,
     configs: keys.reduce((configs, key) => {
       const name = key.split(':')[1];

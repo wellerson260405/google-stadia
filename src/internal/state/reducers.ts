@@ -1,4 +1,4 @@
-import { createReducer, isFulfilled, isPending, isRejected, SerializedError } from '@reduxjs/toolkit';
+import { Action, createReducer, isFulfilled, isPending, isRejected, SerializedError } from '@reduxjs/toolkit';
 import { AllMyGamepadConfigs } from '../../shared/types';
 import { defaultGamepadConfig, DEFAULT_CONFIG_NAME } from '../../shared/gamepadConfig';
 import {
@@ -14,16 +14,27 @@ export const currentGameReducer = createReducer<string | null>(null, (builder) =
   builder.addCase(fetchGameStatusAction.fulfilled, (state, action) => action.payload || null);
 });
 
-export const activeConfigReducer = createReducer<AllMyGamepadConfigs['activeConfig']>(null, (builder) => {
+export const activeConfigReducer = createReducer<AllMyGamepadConfigs['activeConfig']>(
+  DEFAULT_CONFIG_NAME,
+  (builder) => {
+    builder.addCase(fetchAllAction.fulfilled, (state, action) => {
+      return action.payload.activeConfig;
+    });
+    builder.addCase(activateGamepadConfigAction.fulfilled, (state, action) => {
+      return action.payload.name;
+    });
+  },
+);
+
+export const enabledReducer = createReducer<AllMyGamepadConfigs['isEnabled']>(true, (builder) => {
   builder.addCase(fetchAllAction.fulfilled, (state, action) => {
-    return action.payload.activeConfig;
+    return action.payload.isEnabled;
   });
-  builder.addCase(activateGamepadConfigAction.fulfilled, (state, action) => {
-    // Add user to the state array
-    return action.payload.name;
+  builder.addCase(activateGamepadConfigAction.fulfilled, () => {
+    return true;
   });
   builder.addCase(disableGamepadConfigAction.fulfilled, () => {
-    return null;
+    return false;
   });
 });
 
@@ -54,9 +65,12 @@ interface PendingStatusesState {
   configs: Record<string, PendingReadWriteStatus>;
 }
 
-const isWriteAction = (action: { type: string }) =>
-  action.type.startsWith(deleteGamepadConfigAction.typePrefix) ||
-  action.type.startsWith(modifyGamepadConfigAction.typePrefix);
+function isWriteAction(action: { type: string }): action is Action {
+  return (
+    action.type.startsWith(deleteGamepadConfigAction.typePrefix) ||
+    action.type.startsWith(modifyGamepadConfigAction.typePrefix)
+  );
+}
 
 export const pendingStatusesReducer = createReducer<PendingStatusesState>(
   {

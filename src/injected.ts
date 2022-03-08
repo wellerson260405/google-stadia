@@ -1,7 +1,7 @@
 import { disableConfig, enableConfig } from './browser/browserEventProcessor';
 import { showToast } from './browser/dom/snackbar';
 import { modifyGamepadGlobals, isEnabled as gamepadSimulatorIsEnabled } from './browser/gamepadSimulator';
-import { intializedMsg, Message, MessageTypes } from './shared/messages';
+import { gameChanged, intializedMsg, Message, MessageTypes } from './shared/messages';
 import { GamepadConfig } from './shared/types';
 
 /*
@@ -84,6 +84,7 @@ function connectToExtension(gameName: string | null) {
       clearInterval(interval);
       // The user is no longer playing a game, so disable the virtual gamepad
       handleDisableGamepad();
+      postMessageToWindow(gameChanged(null));
       // Begin listening again for a game to start
       waitForActiveGame();
     }

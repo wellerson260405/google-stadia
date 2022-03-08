@@ -15,7 +15,11 @@ export const getGamepadConfig = (state: RootState, name: string) => {
   };
 };
 
-export const getActiveConfigName = (state: RootState): string | null => {
+export const getIsEnabled = (state: RootState): boolean => {
+  return state.enabled;
+};
+
+export const getActiveConfigName = (state: RootState): string => {
   return state.active;
 };
 

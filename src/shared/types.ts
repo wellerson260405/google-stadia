@@ -53,6 +53,7 @@ export interface GamepadConfig {
 }
 
 export interface AllMyGamepadConfigs {
+  isEnabled: boolean;
+  activeConfig: string;
   configs: Record<string, GamepadConfig>;
-  activeConfig: string | null;
 }

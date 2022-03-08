@@ -1,4 +1,4 @@
-import { injectedMsg, Message } from './shared/messages';
+import { injectedMsg, Message, MessageTypes } from './shared/messages';
 import { injectCssFile, injectImagePaths, injectInitialScriptFile } from './shared/pageInjectUtils';
 
 /*
@@ -17,33 +17,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
 chrome.runtime.sendMessage(injectedMsg());
 
+// Send messages to the injected script
 function handleMessageFromExt(msg: Message) {
-  // Proxy messages to the page itself
   window.postMessage({
     source: 'xcloud-keyboard-mouse-content-script',
     ...msg,
   });
 }
 
+// Accept messages from the injected script
 window.addEventListener('message', (event) => {
   if (event.source != window || event.data.source !== 'xcloud-page') {
-    // We only accept messages from ourselves
+    // Ignore other potential messages from the webpage - we only accept messages from ourselves
     return;
   }
   const msg: Message = event.data;
 
   // https://stackoverflow.com/a/69603416/2359478
   if (chrome.runtime?.id) {
-    // Proxy to the extension
-    chrome.runtime.sendMessage(msg, (response) => {
-      handleMessageFromExt(response);
-    });
+    // Proxy to the extension background script.
+    // (only INITIALIZED message needs a response, so we avoid passing the callback
+    // otherwise - see https://stackoverflow.com/a/59915897)
+    if (msg.type === MessageTypes.INITIALIZED) {
+      chrome.runtime.sendMessage(msg, (response) => {
+        // Handle response from extension
+        handleMessageFromExt(response);
+      });
+    } else {
+      chrome.runtime.sendMessage(msg);
+    }
   }
 });
 
-chrome.runtime.onMessage.addListener((msg, sender, _sendResponse) => {
-  // Receives messages from the extension background page
+// Accept messages from the extension background or popup page
+chrome.runtime.onMessage.addListener((msg, sender) => {
+  // Ignore messages from other content scripts just in case
   if (!sender.tab) {
     handleMessageFromExt(msg);
   }
+  return false;
 });
