@@ -1,5 +1,5 @@
 import { getAllStoredSync, storeActiveGamepadConfig, updateGameName } from './internal/state/chromeStoredData';
-import { disableActionButton, enableActionButton } from './internal/utils/actionButtonUtils';
+import { enableActionButton } from './internal/utils/actionButtonUtils';
 import { DEFAULT_CONFIG_NAME } from './shared/gamepadConfig';
 import { MessageTypes, activateGamepadConfigMsg, Message } from './shared/messages';
 
@@ -11,7 +11,6 @@ import { MessageTypes, activateGamepadConfigMsg, Message } from './shared/messag
 
 chrome.runtime.onInstalled.addListener(({ reason }) => {
   // Page actions are disabled by default and enabled on select tabs
-  disableActionButton();
   if (reason === 'install') {
     // First time install - enable the default gamepad config
     storeActiveGamepadConfig(DEFAULT_CONFIG_NAME);
