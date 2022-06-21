@@ -39,10 +39,11 @@
   "web_accessible_resources": [
     {
       "resources": [
+        "js/vendor.js",
         "js/injected.js",
+        "css/injected.css",
         "images/keyboard.svg",
-        "images/xbox-logo.svg",
-        "css/injected.css"
+        "images/xbox-logo.svg"
       ],
       "matches": [
         "https://www.xbox.com/*",

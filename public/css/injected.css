@@ -1,4 +1,15 @@
-#snackbar-xmc {
+#toolbar-xmnk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 150;
+  top: 5px;
+  right: 0;
+}
+
+#snackbar-xmnk {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,7 +29,7 @@
   transform: translateX(-50%);
 }
 
-#snackbar-xmc img {
+#snackbar-xmnk img {
   fill: #fff;
   width: 2em;
   height: 2em;
@@ -26,16 +37,16 @@
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
-#snackbar-xmc.show {
+#snackbar-xmnk.show {
   visibility: visible;
   /* Show the snackbar */
   /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
   However, delay the fade out process for 2.5 seconds */
-  -webkit-animation: fadein-xmc 0.5s, fadeout-xmc 0.5s 2.5s;
-  animation: fadein-xmc 0.5s, fadeout-xmc 0.5s 2.5s;
+  -webkit-animation: fadein-xmnk 0.5s, fadeout-xmnk 0.5s 2.5s;
+  animation: fadein-xmnk 0.5s, fadeout-xmnk 0.5s 2.5s;
 }
 
-#click-to-enable-mouse-xmc {
+#click-to-enable-mouse-xmnk {
   cursor: pointer;
   display: flex;
   flex-direction: row;
@@ -51,53 +62,10 @@
   text-align: center;
   border-radius: 16px;
   padding: 18px;
-  position: fixed;
-  z-index: 150;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#click-to-enable-mouse-xmc .minimize-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  color: #aaa;
-  background-color: rgba(30, 30, 30, 0.5);
-  width: 30px;
-  height: 30px;
-  border: none;
-  border-radius: 3px;
-  vertical-align: middle;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#click-to-enable-mouse-xmc.minimized {
-  top: 10px;
-  right: 10px;
-  left: auto;
-  transform: none;
-  width: 100px;
-  min-height: 34px;
-  font-size: 0.8em;
-  border-radius: 6px;
-  padding: 8px;
-  padding-right: 44px;
-}
-
-#click-to-enable-mouse-xmc.minimized span {
-  display: none;
-}
-
-#click-to-enable-mouse-xmc.minimized::before {
-  content: "Enable mouse";
 }
 
 /* Animations to fade the snackbar in and out */
-@-webkit-keyframes fadein-xmc {
+@-webkit-keyframes fadein-xmnk {
   from {
     bottom: 0;
     opacity: 0;
@@ -109,7 +77,7 @@
   }
 }
 
-@keyframes fadein-xmc {
+@keyframes fadein-xmnk {
   from {
     bottom: 0;
     opacity: 0;
@@ -121,7 +89,7 @@
   }
 }
 
-@-webkit-keyframes fadeout-xmc {
+@-webkit-keyframes fadeout-xmnk {
   from {
     bottom: 30px;
     opacity: 1;
@@ -133,7 +101,7 @@
   }
 }
 
-@keyframes fadeout-xmc {
+@keyframes fadeout-xmnk {
   from {
     bottom: 30px;
     opacity: 1;

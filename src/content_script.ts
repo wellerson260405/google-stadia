@@ -8,6 +8,7 @@ import { injectCssFile, injectImagePaths, injectInitialScriptFile } from './shar
  * https://developer.chrome.com/docs/extensions/mv3/content_scripts/#host-page-communication
  */
 
+injectInitialScriptFile(chrome.runtime.getURL('/js/vendor.js'));
 injectInitialScriptFile(chrome.runtime.getURL('/js/injected.js'));
 
 document.addEventListener('DOMContentLoaded', () => {

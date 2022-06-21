@@ -1,5 +1,4 @@
 import { CodeMap, DEFAULT_SENSITIVITY, isButtonMapping, processGamepadConfig } from '../shared/gamepadConfig';
-import { createClickElement, firstClickText, secondClickText } from './dom/clickToEnableMouse';
 import {
   enableSimulator,
   simulateAxeDirPress,
@@ -9,11 +8,11 @@ import {
   simulateBtnUnpress,
 } from './gamepadSimulator';
 import { Direction, GamepadConfig, StickNum } from '../shared/types';
+import { actions, store } from './state';
 
 const listeners = {
   keydown: null as null | EventListener,
   keyup: null as null | EventListener,
-  clickToEnableMouse: null as null | ReturnType<typeof createClickElement>,
   pointerlockchange: null as null | EventListener,
   mousemove: null as null | EventListener,
   mousedown: null as null | EventListener,
@@ -26,9 +25,7 @@ const getParentElement = () => {
 };
 
 const mouseLockError = () => {
-  if (listeners.clickToEnableMouse) {
-    listeners.clickToEnableMouse.text.innerText = secondClickText;
-  }
+  store.dispatch(actions.setListening('error'));
 };
 
 function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITIVITY) {
@@ -36,7 +33,6 @@ function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITIVITY) {
   let needRaf = true; // used for requestAnimationFrame to only trigger at 60fps
   let movementX = 0;
   let movementY = 0;
-  const parentElement = getParentElement();
   const handleMouseMove = () => {
     needRaf = true;
     clearTimeout(stopMovingTimer);
@@ -63,36 +59,18 @@ function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITIVITY) {
   listeners.pointerlockchange = function onPointerLockChange() {
     if (!listeners.mousemove) return;
     if (document.pointerLockElement) {
-      listeners.clickToEnableMouse?.clickElement.remove();
+      store.dispatch(actions.setListening('listening'));
       document.addEventListener('mousemove', listeners.mousemove);
     } else {
       clearTimeout(stopMovingTimer);
       document.removeEventListener('mousemove', listeners.mousemove);
       // show click element again
-      listeners.clickToEnableMouse!.text.innerText = firstClickText;
-      parentElement.appendChild(listeners.clickToEnableMouse!.clickElement);
+      store.dispatch(actions.setListening('not-listening'));
     }
   };
   document.addEventListener('pointerlockchange', listeners.pointerlockchange);
   document.addEventListener('pointerlockerror', mouseLockError);
-  listeners.clickToEnableMouse = createClickElement();
-  parentElement.appendChild(listeners.clickToEnableMouse.clickElement);
-  listeners.clickToEnableMouse.clickElement.addEventListener('mousedown', function onClick(e) {
-    // Note: make sure the game stream is still in focus or the game will pause input!
-    e.preventDefault(); // prevent bluring when clicked
-    const req: any = parentElement.requestPointerLock();
-    // This shouldn't be needed now with above preventDefault, but just to be safe...
-    const doFocus = () => {
-      const streamDiv = document.getElementById('game-stream');
-      streamDiv?.focus();
-    };
-    if (req) {
-      // Chrome returns a Promise here
-      req.then(doFocus).catch(mouseLockError);
-    } else {
-      doFocus();
-    }
-  });
+  store.dispatch(actions.setListening('not-listening'));
 }
 
 function listenKeyboard(codeMapping: Record<string, CodeMap>) {
@@ -185,12 +163,29 @@ function unlistenKeyboard() {
 
 function unlistenMouseMove() {
   document.exitPointerLock();
-  listeners.clickToEnableMouse?.clickElement.remove();
+  store.dispatch(actions.setListening('not-listening'));
 }
 
 function unlistenAll() {
   unlistenKeyboard();
   unlistenMouseMove();
+}
+
+export function mouseTriggerListener(e: MouseEvent) {
+  // Note: make sure the game stream is still in focus or the game will pause input!
+  e.preventDefault(); // prevent bluring when clicked
+  const req: any = getParentElement().requestPointerLock();
+  // This shouldn't be needed now with above preventDefault, but just to be safe...
+  const doFocus = () => {
+    const streamDiv = document.getElementById('game-stream');
+    streamDiv?.focus();
+  };
+  if (req) {
+    // Chrome returns a Promise here
+    req.then(doFocus).catch(mouseLockError);
+  } else {
+    doFocus();
+  }
 }
 
 export function enableConfig(config: GamepadConfig) {

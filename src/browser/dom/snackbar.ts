@@ -1,6 +1,6 @@
 import { getInjectedImagePaths } from '../../shared/pageInjectUtils';
 
-const SNACKBAR_ID = 'snackbar-xmc';
+const SNACKBAR_ID = 'snackbar-xmnk';
 const TOAST_TIME_MS = 3000;
 
 let timeout: ReturnType<typeof setTimeout>;
