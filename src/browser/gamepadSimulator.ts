@@ -3,7 +3,7 @@ import { Direction } from '../shared/types';
 let useFakeController = false;
 const origGetGamepads = navigator.getGamepads.bind(navigator);
 
-export const fakeController = {
+const fakeController = {
   axes: [0, 0, 0, 0],
   buttons: [
     {
@@ -177,15 +177,9 @@ export function simulateGamepadDisconnect() {
   window.dispatchEvent(event);
 }
 
-const gamepadSimulator = {
-  fakeController,
-};
-
 export function modifyGamepadGlobals() {
-  if ((window as any).gamepadSimulator) return;
-  (window as any).gamepadSimulator = gamepadSimulator;
   navigator.getGamepads = function getGamepads() {
-    return useFakeController ? [fakeController] : origGetGamepads();
+    return useFakeController ? [{ ...fakeController }] : origGetGamepads();
   };
 }
 
@@ -203,6 +197,5 @@ export function isEnabled() {
 }
 
 export function resetGamepadGlobals() {
-  (window as any).gamepadSimulator = null;
   navigator.getGamepads = origGetGamepads;
 }

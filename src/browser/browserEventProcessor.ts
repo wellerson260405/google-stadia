@@ -44,11 +44,6 @@ function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITIVITY) {
       simulateAxeMove(axe, 0, 0);
     }, 50);
     // trigger the joystick on move
-    // TODO scale based on viewport size? Does this matter?
-    // (i.e. will a user move mouse fewer pixels if they are playing in a smaller viewport?)
-    // const { clientWidth, clientHeight } = parentElement;
-    // const scaleFactor = clientHeight / 5;
-    // TODO factor in time delta as well as scaling factor, since smaller dt will mean smaller movementX/Y
     const clampedX = movementX === 0 ? 0 : Math.max(Math.min(movementX / sensitivity, 1), -1);
     const clampedY = movementY === 0 ? 0 : Math.max(Math.min(movementY / sensitivity, 1), -1);
     movementX = 0;
@@ -62,7 +57,7 @@ function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITIVITY) {
     if (needRaf) {
       needRaf = false;
       // Queue processing
-      requestAnimationFrame(handleMouseMove);
+      setTimeout(handleMouseMove, 40); // 16 ms = 60 fps, 32 ms = 30 fps
     }
   };
   listeners.pointerlockchange = function onPointerLockChange() {
