@@ -7,9 +7,9 @@ import { confirm } from '../utils/confirmUtil';
 import { useAppSelector } from './hooks/reduxHooks';
 import SensitivitySelector from './SensitivitySelector';
 import StickSelector from './StickSelector';
-import KeybindingsForButton from './KeybindingsForButton';
 import useKeyConfigEditorState from './hooks/useKeyConfigEditorState';
 import { exportConfig } from '../utils/importExport';
+import KeybindingsTable from './KeybindingsTable';
 
 interface SensitivityEditorProps {
   name: string;
@@ -106,24 +106,13 @@ function GamepadConfigEditor({ name, onSubmitChanges, onCancelCreate, onActivate
   return (
     <form className="vertical full-height" onSubmit={handleSubmit}>
       <section className="config-editor full-absolute vertical">
-        <table className="margin-vertical">
-          <tbody>
-            {(Object.keys(emptyGamepadConfig.keyConfig) as Array<keyof typeof state.config.keyConfig>).map((button) => {
-              const val = state.config.keyConfig[button];
-              return (
-                <KeybindingsForButton
-                  key={button.toString()}
-                  useSpacers
-                  button={button}
-                  readOnly={!isEditing}
-                  value={val}
-                  onChange={handleKeybindChange}
-                  error={state.errors.keyConfig[button]}
-                />
-              );
-            })}
-          </tbody>
-        </table>
+        <KeybindingsTable
+          className="margin-vertical"
+          gamepadConfig={state.config}
+          errors={state.errors}
+          isEditing={isEditing}
+          onKeybindChange={handleKeybindChange}
+        />
         <div className="margin-bottom">
           <div className="horizontal">
             <StickSelector

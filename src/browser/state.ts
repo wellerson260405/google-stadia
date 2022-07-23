@@ -23,7 +23,7 @@ const presetSlice = createSlice({
   },
 });
 
-interface MouseState {
+export interface MouseState {
   status: 'listening' | 'error' | 'not-listening';
 }
 

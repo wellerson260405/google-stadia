@@ -11,7 +11,7 @@ const MAX_BINDINGS = 2; // TODO do people want/need tripple keybinds?
 interface TrippleKeybindProps {
   button: string;
   value: KeyMap;
-  onChange: (button: string, updated: KeyMap) => void;
+  onChange?: (button: string, updated: KeyMap) => void;
   error?: string;
   readOnly?: boolean;
   useSpacers?: boolean;
@@ -38,7 +38,7 @@ function KeybindingsForButton({ button, value, onChange, readOnly, error, useSpa
       if (mouseButton === 0 || mouseButton === 2) {
         const code = mouseButton === 0 ? 'Click' : 'RightClick';
         if (codes.indexOf(code) === -1) {
-          onChange(button, codes.concat([code]));
+          onChange?.(button, codes.concat([code]));
         }
       }
       handleCancelListen();
@@ -52,7 +52,7 @@ function KeybindingsForButton({ button, value, onChange, readOnly, error, useSpa
       if (e.cancelable) e.preventDefault();
       const code = 'Scroll';
       if (codes.indexOf(code) === -1) {
-        onChange(button, codes.concat([code]));
+        onChange?.(button, codes.concat([code]));
       }
       handleCancelListen();
     },
@@ -66,7 +66,7 @@ function KeybindingsForButton({ button, value, onChange, readOnly, error, useSpa
       if (e.cancelable) e.preventDefault();
       const { code } = e;
       if (code !== 'Escape' && codes.indexOf(code) === -1) {
-        onChange(button, codes.concat([code]));
+        onChange?.(button, codes.concat([code]));
       }
       handleCancelListen();
     };
@@ -74,7 +74,7 @@ function KeybindingsForButton({ button, value, onChange, readOnly, error, useSpa
   }, [button, codes, readOnly, handleCancelListen, onChange]);
 
   const handleRemove = (i: number) => {
-    onChange(
+    onChange?.(
       button,
       codes.filter((_, j) => i !== j),
     );
