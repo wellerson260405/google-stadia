@@ -31,6 +31,7 @@
         "https://gamepad-tester.com/"
       ],
       "js": [
+        "js/vendor.js",
         "js/content_script.js"
       ]
     }
@@ -42,8 +43,7 @@
         "js/vendor.js",
         "js/injected.js",
         "css/injected.css",
-        "images/keyboard.svg",
-        "images/xbox-logo.svg"
+        "images/*"
       ],
       "matches": [
         "https://www.xbox.com/*",

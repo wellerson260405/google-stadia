@@ -31,7 +31,7 @@ export function injectImagePaths(files: string[]) {
 }
 
 let imagePaths: Record<string, string>;
-export function getInjectedImagePaths(): Record<string, string> {
+function getInjectedImagePaths(): Record<string, string> {
   if (imagePaths) return imagePaths;
   const meta = document.head.querySelector(`meta[name=${META_IMAGE_PATHS}]`);
   if (meta) {
@@ -47,6 +47,12 @@ export function getInjectedImagePaths(): Record<string, string> {
         return acc;
       }, {} as Record<string, string>);
     }
+  } else {
+    return {};
   }
   return imagePaths;
+}
+
+export function getInjectedImagePath(path: string): string {
+  return getInjectedImagePaths()[path] || '';
 }

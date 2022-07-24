@@ -1,4 +1,4 @@
-import { getInjectedImagePaths } from '../../shared/pageInjectUtils';
+import { getInjectedImagePath } from '../../shared/pageInjectUtils';
 
 const SNACKBAR_ID = 'snackbar-xmnk';
 const TOAST_TIME_MS = 3000;
@@ -11,7 +11,7 @@ function getSnackbarDiv() {
     div = document.createElement('div');
     div.id = SNACKBAR_ID;
     const svg = document.createElement('img');
-    svg.src = getInjectedImagePaths()['keyboard.svg'];
+    svg.src = getInjectedImagePath('keyboard.svg');
     div.appendChild(svg);
     const span = document.createElement('span');
     div.appendChild(span);

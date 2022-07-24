@@ -12,7 +12,7 @@
   background-color: rgba(30, 30, 30, 0.7);
   color: #fff;
   fill: #fff;
-  max-width: 380px;
+  max-width: 450px;
   user-select: none;
 }
 
@@ -67,6 +67,10 @@
   padding-right: 10px;
 }
 
+#toolbar-xmnk .header-xmnk-size-2 {
+  width: 450px;
+}
+
 #toolbar-xmnk .mouse-listening-xmnk .left-xmnk {
   opacity: 0.5;
   cursor: not-allowed;
@@ -87,6 +91,7 @@
 }
 
 #toolbar-xmnk .size-buttons-xmnk button {
+  outline: none;
   cursor: pointer;
   height: 13px;
   background-color: rgba(255, 255, 255, 0.25);
@@ -119,7 +124,7 @@
 
 #toolbar-xmnk .keybindings-xmnk table {
   width: 100%;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.5);
   border: none;
   border-collapse: collapse;
 }
@@ -145,13 +150,16 @@
 
 #click-to-enable-mouse-xmnk {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #click-to-enable-mouse-xmnk.expanded-xmnk {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-size: 1.5em;
   font-weight: bold;
   text-align: center;

@@ -13,7 +13,7 @@ injectInitialScriptFile(chrome.runtime.getURL('/js/injected.js'));
 
 document.addEventListener('DOMContentLoaded', () => {
   injectCssFile(chrome.runtime.getURL('/css/injected.css'));
-  injectImagePaths([chrome.runtime.getURL('/images/keyboard.svg')]);
+  injectImagePaths([chrome.runtime.getURL('/images/keyboard.svg'), chrome.runtime.getURL('/images/mouse.svg')]);
 });
 
 chrome.runtime.sendMessage(injectedMsg());

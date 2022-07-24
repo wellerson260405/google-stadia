@@ -45,11 +45,10 @@ function checkIfInGame() {
   const { gameName, gameId } = getXboxGameInfo() || { gameName: null, gameId: null };
   let isInGame = !isXbox;
   if (isXbox) {
-    // const h1 = document.querySelector('h1');
-    // const closeBtn = document.querySelector("[data-id='ui-container'] [aria-label='Close']");
-    // const streamDiv = document.getElementById('game-stream');
-    // isInGame = !h1 && !closeBtn && !!streamDiv;
-    isInGame = true;
+    const h1 = document.querySelector('h1');
+    const closeBtn = document.querySelector("[data-id='ui-container'] [aria-label='Close']");
+    const streamDiv = document.getElementById('game-stream');
+    isInGame = !h1 && !closeBtn && !!streamDiv;
   }
   return {
     isInGame,

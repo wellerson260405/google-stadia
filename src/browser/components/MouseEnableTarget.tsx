@@ -1,7 +1,7 @@
 import { TooltipHost } from '@fluentui/react';
 import classnames from 'classnames';
 import React, { useCallback, MouseEvent } from 'react';
-import { getInjectedImagePaths } from '../../shared/pageInjectUtils';
+import { getInjectedImagePath } from '../../shared/pageInjectUtils';
 import { mouseTriggerListener } from '../browserEventProcessor';
 import { MouseState } from '../state';
 
@@ -14,10 +14,9 @@ interface MouseEnableTargetProps extends MouseState {
 
 function MouseEnableTarget({ status, isExpanded }: MouseEnableTargetProps) {
   const mouseText = status === 'error' ? secondClickText : firstClickText;
-  const imgPaths = getInjectedImagePaths();
-  const mouseImgSrc = imgPaths['mouse.svg'];
+  const mouseImgSrc = getInjectedImagePath('mouse.svg');
 
-  const expandedStyle = { height: '1.5em', paddingRight: '15px' };
+  const expandedStyle = { height: '1.5em' };
 
   const handleMouseDown = useCallback((e: MouseEvent) => {
     mouseTriggerListener(e.nativeEvent);
@@ -31,7 +30,7 @@ function MouseEnableTarget({ status, isExpanded }: MouseEnableTargetProps) {
         onMouseDown={status !== 'listening' ? handleMouseDown : undefined}
       >
         <img src={mouseImgSrc} style={isExpanded ? expandedStyle : undefined} />
-        {isExpanded ? <span>{mouseText}</span> : null}
+        {isExpanded ? <div>{mouseText}</div> : null}
       </div>
     </TooltipHost>
   );
