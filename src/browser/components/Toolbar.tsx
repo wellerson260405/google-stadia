@@ -26,9 +26,9 @@ export default function Toolbar() {
   const presetHasMouseControls = preset.preset?.mouseConfig.mouseControls !== undefined;
 
   return preset.preset ? (
-    <div className={classnames(mouse.status === 'listening' && 'mouse-listening-xmnk')}>
-      <div className={classnames('header-xmnk', `header-xmnk-size-${size}`)}>
-        {size !== 2 && (presetHasMouseControls ? <MouseEnableTarget {...mouse} /> : <KeyboardOnlyIcon />)}
+    <div className={classnames(mouse.status === 'listening' && 'mouse-listening-xmnk', 'full-width-xmnk')}>
+      <div className={classnames('header-xmnk', `header-xmnk-size-${size}`, 'full-width-xmnk')}>
+        {size !== 2 && presetHasMouseControls ? <MouseEnableTarget {...mouse} /> : <KeyboardOnlyIcon />}
         {size !== 0 && (
           <div className="preset-name-xmnk">
             {size === 2 ? 'Preset: ' : ''}
