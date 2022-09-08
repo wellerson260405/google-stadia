@@ -29,6 +29,7 @@
       "matches": [
         "*://*.xbox.com/*",
         "https://gamepad-tester.com/"
+        "https://stadia.google.com/"
       ],
       "js": [
         "js/content_script.js"
