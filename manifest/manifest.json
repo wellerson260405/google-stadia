@@ -47,6 +47,7 @@
       "matches": [
         "https://www.xbox.com/*",
         "https://gamepad-tester.com/*"
+        "https://stadia.google.com/*"
       ]
     }
   ],
