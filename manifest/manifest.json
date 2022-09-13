@@ -27,8 +27,8 @@
     {
       "run_at": "document_start",
       "matches": [
-        "*://*.xbox.com/*",
-        "https://gamepad-tester.com/"
+        "https://www.xbox.com/*",
+        "https://gamepad-tester.com/",
         "https://stadia.google.com/"
       ],
       "js": [
@@ -47,7 +47,7 @@
       ],
       "matches": [
         "https://www.xbox.com/*",
-        "https://gamepad-tester.com/*"
+        "https://gamepad-tester.com/*",
         "https://stadia.google.com/*"
       ]
     }
